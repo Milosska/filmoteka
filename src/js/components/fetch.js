@@ -20,8 +20,6 @@ async function fetchTrending(page) {
     console.log(err);
   }
 }
-// Виклик тимчасовий, щоб можна було подивитися результат
-fetchTrending();
 
 // Запит фільму за ключовим словом на головній сторінці
 async function fetchSearch(value, page) {
@@ -41,8 +39,6 @@ async function fetchSearch(value, page) {
     console.log(err);
   }
 }
-// Виклик тимчасовий, щоб можна було подивитися результат
-fetchSearch('fistful');
 
 // Запит повної інформації про кінофільм для сторінки кінофільму
 async function fetchMovie(id) {
@@ -62,8 +58,6 @@ async function fetchMovie(id) {
     console.log(err);
   }
 }
-// Виклик тимчасовий, щоб можна було подивитися результат
-fetchMovie(35);
 
 // Запиту повної інформації про можливий трейлер на YouTube
 async function fetchVideos(id) {
@@ -83,5 +77,3 @@ async function fetchVideos(id) {
     console.log(err);
   }
 }
-// Виклик тимчасовий, щоб можна було подивитися результат
-fetchVideos(35);
