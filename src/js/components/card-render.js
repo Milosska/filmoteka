@@ -387,5 +387,5 @@ Handlebars.registerHelper('getGenres', function (genresArray) {
   return genres ? genres : 'Genres n/a';
 });
 
-console.log(cardMarkup(response.results));
+// console.log(cardMarkup(response.results));
 export { cardMarkup };
