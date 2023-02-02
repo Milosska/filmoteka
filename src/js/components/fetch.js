@@ -8,7 +8,6 @@
 // Приклад виклику функції: fetchInfo('keyword', 'Batman', 1);
 
 async function fetchInfo(endpoint, ...params) {
-  console.log(params);
   const BASE_URL = 'https://api.themoviedb.org/3/';
   const TOKEN = '51114562faac57108ae3113fba230ec4';
   const END_URL = {
@@ -25,7 +24,8 @@ async function fetchInfo(endpoint, ...params) {
       throw new Error(response.statusText);
     }
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
+    return data;
   } catch (err) {
     console.log(err);
   }
