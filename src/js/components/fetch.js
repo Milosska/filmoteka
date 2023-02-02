@@ -1,16 +1,26 @@
 // <!-- Ольга Мельник та Олексій Воробйов -->
 
-// Запит на список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці
-let page = 1;
+// У параметри "params" передавати:
+// ----- у разі фетча за ключовим словом:
+// 1) першим параметром - слово для пошуку
+// 2) другим параметром - номер сторінки(число або строка)
+// ----- у разі фетча фільму або трейлеру: id (число або строка)
+// Приклад виклику функції: fetchInfo('keyword', 'Batman', 1);
 
-async function fetchTrending(page) {
+async function fetchInfo(endpoint, ...params) {
+  console.log(params);
   const BASE_URL = 'https://api.themoviedb.org/3/';
   const TOKEN = '51114562faac57108ae3113fba230ec4';
+  const END_URL = {
+    trends: `trending/movie/day?api_key=${TOKEN}`,
+    keyword: `search/movie?api_key=${TOKEN}&language=en-US&query=${params[0]}&page=${params[1]}&include_adult=false`,
+    movie: `movie/${params[0]}?api_key=${TOKEN}&language=en-US`,
+    trailer: `${BASE_URL}movie/${params[0]}/videos?api_key=${TOKEN}`,
+    genres: `genre/movie/list?api_key=${TOKEN}&language=en-US`,
+  };
 
   try {
-    const response = await fetch(
-      `${BASE_URL}trending/movie/day?api_key=${TOKEN}`
-    );
+    const response = await fetch(`${BASE_URL}${END_URL[endpoint]}`);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -21,59 +31,4 @@ async function fetchTrending(page) {
   }
 }
 
-// Запит фільму за ключовим словом на головній сторінці
-async function fetchSearch(value, page) {
-  const BASE_URL = 'https://api.themoviedb.org/3/';
-  const TOKEN = '51114562faac57108ae3113fba230ec4';
-
-  try {
-    const response = await fetch(
-      `${BASE_URL}search/movie?api_key=${TOKEN}&language=en-US&query=${value}&page=${page}&include_adult=false`
-    );
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const data = await response.json();
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-// Запит повної інформації про кінофільм для сторінки кінофільму
-async function fetchMovie(id) {
-  const BASE_URL = 'https://api.themoviedb.org/3/';
-  const TOKEN = '51114562faac57108ae3113fba230ec4';
-
-  try {
-    const response = await fetch(
-      `${BASE_URL}movie/${id}?api_key=${TOKEN}&language=en-US`
-    );
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const data = await response.json();
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-// Запиту повної інформації про можливий трейлер на YouTube
-async function fetchVideos(id) {
-  const BASE_URL = 'https://api.themoviedb.org/3/';
-  const TOKEN = '51114562faac57108ae3113fba230ec4';
-
-  try {
-    const response = await fetch(
-      `${BASE_URL}movie/${id}/videos?api_key=${TOKEN}`
-    );
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const data = await response.json();
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-}
+export { fetchInfo };
