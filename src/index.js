@@ -1,0 +1,10 @@
+import './js/components/add-btn';
+import './js/components/card-render';
+import './js/components/fetch';
+import './js/components/film-modal-render';
+import './js/components/markup-render';
+import './js/components/modal';
+import './js/components/spinner';
+import './js/film-search';
+import './js/pagination';
+import './js/user-data';

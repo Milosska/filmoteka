@@ -1,0 +1,23 @@
+:root {
+  /* ================= кольори ===============*/
+  --white: #ffffff;
+  --black: #000000;
+  --orange: #ff6b01;
+  --dark-grey: #545454;
+  --light-grey: #f7f7f7;
+  --red: #ff001b;
+  --picture-gradient: rgba(0, 0, 0, 0.56);
+
+  /* ================= шрифт =============== */
+  --main-font: 'Roboto', sans-serif;
+}
+
+/* ==================== анімування ефектів ================= */
+$animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+/* ==================== media ================= */
+$breakpoints: (
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1280px,
+);

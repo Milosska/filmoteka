@@ -1,0 +1,38 @@
+/* ================= стилізує контейнер для всіх девайсів ===============*/
+%container {
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media screen and (min-width: map-get($breakpoints, 'phone')) {
+    width: 480px;
+  }
+
+  @media screen and (min-width: map-get($breakpoints, 'tablet')) {
+    padding: 0 32px;
+    width: 768px;
+  }
+
+  @media screen and (min-width: map-get($breakpoints, 'desktop')) {
+    width: 1280px;
+  }
+}
+
+/* =================== visually-hidden =================*/
+%visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* =================== центрує елемент (має бути задана ширина батьківського елемента!) =================*/
+%centred {
+  margin-left: auto;
+  margin-right: auto;
+}

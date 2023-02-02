@@ -1,0 +1,97 @@
+/* ====================== розраховує висоту текстової строки =======================*/
+@mixin font-size($size, $height) {
+  font-size: $size;
+  line-height: calc($height / $size);
+}
+
+/* ============================ додає псевдоелементи =========================*/
+@mixin pseudo($width, $height) {
+  display: block;
+  content: '';
+  width: $width;
+  height: $height;
+}
+
+/* ============================ для роботи з флексами ===========================*/
+/* ------- ставить gap, вирівнює об'єкти по горизонталі і по вертикалі (за замовченням по центру) ------- */
+// значення null на місці змінної прибирає параметр (строку коду) з міксіну
+@mixin flex($gap, $x: center, $y: center) {
+  display: flex;
+  gap: $gap;
+  justify-content: $x;
+  align-items: $y;
+}
+
+/* ------- розраховує параметр flex-basis ------- */
+// ($n - кількість елементів у рядку; $gap - значення gap)
+@mixin flex-basis($n, $gap) {
+  flex-basis: calc((100% - ($gap * ($n - 1))) / $n);
+}
+
+/* ============================= позиціонує елементи =======================*/
+// ($position - вид позиціонування (relative/absolute/fixed)
+// $top-or-bottom - ставиться значення top або bottom
+// $y - зміщення від верху/низу в px
+// $left-or-right - ставиться значення left або right
+// $x - зміщення справа/зліва в px
+@mixin position(
+  $position: absolute,
+  $top-or-bottom,
+  $y: 0,
+  $left-or-right,
+  $x: 0
+) {
+  position: $position;
+  #{$top-or-bottom}: $y;
+  #{$left-or-right}: $x;
+}
+
+/* ============================= aнімує властивості =======================*/
+/* ------- одну властивість ------- */
+@mixin animation($property) {
+  transition: $property $animation;
+}
+
+/* ------- дві властивості ------- */
+@mixin animation-m($property-1, $property-2) {
+  transition: $property-1 $animation, $property-2 $animation;
+}
+
+/* ------- три властивості ------- */
+@mixin animation-l($property-1, $property-2, $property-3) {
+  transition: $property-1 $animation, $property-2 $animation,
+    $property-3 $animation;
+}
+
+/* ============================ створює медіаправила ======================*/
+// $max-or-min - ставиться значення max або min
+// $device - вказується назва типу девайса (phone/tablet/desktop)
+@mixin media($max-or-min: min, $device) {
+  @if $max-or-min == max {
+    @media screen and (#{$max-or-min}-width: (map-get($breakpoints, '#{$device}') - 0.5px)) {
+      @content;
+    }
+  } @else {
+    @media screen and (#{$max-or-min}-width: map-get($breakpoints, '#{$device}')) {
+      @content;
+    }
+  }
+}
+
+/* ============================ ставить bg-picture для різних ретина-дисплеїв ======================*/
+// $picture-name - назва картинки разом з форматом (наприклад cow-min.png)
+@mixin bg-picture($picture-name) {
+  background-image: url('../images/backgrounds/#{$picture-name}');
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../images/backgrounds/#{$picture-name}');
+  }
+
+  @media (min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+    background-image: url('../images/backgrounds/#{$picture-name}');
+  }
+}

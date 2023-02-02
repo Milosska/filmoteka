@@ -1,0 +1,12 @@
+.main__container {
+  @extend %container;
+
+  @include media(min, tablet) {
+    @include flex(32px, top, left);
+    flex-wrap: wrap;
+  }
+
+  @include media(min, desktop) {
+    @include flex(16px, top, left);
+  }
+}
