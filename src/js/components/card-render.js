@@ -3,6 +3,10 @@
 //Виклик шаблону hbs:
 import cardMarkup from '../../templates/film-card.hbs';
 
+// Функція cardsMarkupCreate
+// приймає масив фільмів,
+// та повертає строку, яка відповідає HTML-розмітці списку фільмів
+// <li>...</li>
 export default function cardsMarkupCreate(moviesArray) {
   const Handlebars = require('handlebars');
   const BASEIMGURL = 'https://image.tmdb.org/t/p/w500';
