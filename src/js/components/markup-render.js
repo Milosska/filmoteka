@@ -5,15 +5,15 @@ import cardsMarkupCreate from './card-render';
 
 const mainList = document.querySelector('.main__list');
 
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', renderPageMarkup);
+const formBtn = document.querySelector('.form__btn');
+formBtn.addEventListener('click', renderPageMarkup);
+window.addEventListener('keydown', onEnterPress);
 // https://api.themoviedb.org/3/trending/movie/day?api_key=51114562faac57108ae3113fba230ec4&page=2
 
-
-function renderPageMarkup(evt, page=5) {
+function renderPageMarkup(evt, query, page=1) {
   clearMarkup();
   
-  fetchInfo('keyword', 'dog', page).then(data => {
+  fetchInfo('keyword', query, page).then(data => {
               
     localStorage.setItem('current-films', JSON.stringify(data.results));
 
@@ -24,12 +24,19 @@ function renderPageMarkup(evt, page=5) {
     }).catch (error => onFetchError());
 }
 
+function onEnterPress(evt) {
+ 
+  if (evt.code === 'Enter') {
+    renderPageMarkup();
+  }
+}
+
 function clearMarkup() {
   mainList.innerHTML = '';
 }
 
 function onFetchError() {
-     
+  console.log(error);  
 }
 
 export { renderPageMarkup };
