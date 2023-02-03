@@ -1,4 +1,32 @@
 <!-- Тетяна Шмігель -->
 <header class="header">
-  <!-- Писати розмітку всередині цього тегу -->
+  <div class="header__container">
+    <nav class="header__nav logo">
+      <a href="" class="logo__link">
+        <svg class="logo__icon" width="24" height="24">
+          <use href="./images/svg-sprite.svg#logo"></use>
+        </svg>
+        <span class="logo__text">Filmoteka</span>
+        <ul class="header__nav-list nav__list">
+          <li class="nav__item">
+            <a class="nav__link nav__link--current" href="./index.html">Home</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="./library.html">My library</a>
+          </li>
+        </ul>
+      </a>
+    </nav>
+    <form class="form">
+      <input class="form__input" type="text" placeholder="Movie search" />
+      <button class="form__btn" type="submit">
+        <svg class="form__icon" width="12" height="12">
+          <use href="./images/svg-sprite.svg#search"></use>
+        </svg>
+      </button>
+    </form>
+  </div>
 </header>
+
+<!-- <p class="header__error-message" id="errorMessage">
+ Search result not successful. Enter the correct movie name and try again. </p> -->

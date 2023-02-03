@@ -1,1 +1,168 @@
 //  Тетяна Шмігель
+.header {
+  max-width: 100%;
+  min-height: 230px;
+  padding-top: 40px;
+  padding-bottom: 44px;
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: url('../images/backgrounds/abstract-background-with-red-lines 1_sm-@1x.jpg');
+  background-size: cover;
+
+  @include bg-picture('abstract-background-with-red-lines 1_sm-@2x.jpg');
+
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 81px;
+    height: 216px;
+    background-image: url('../images/backgrounds/abstract-background-with-red-lines 1_md-@1x.jpg');
+
+    @include bg-picture('abstract-background-with-red-lines 1_md-@2x.jpg');
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 45px;
+    padding-bottom: 44px;
+    height: 216px;
+    background-image: url('../images/backgrounds/abstract-background-with-red-lines 1_lg-@1x.jpg');
+
+    @include bg-picture('abstract-background-with-red-lines 1_lg-@1x.jpg');
+  }
+}
+
+.header__container {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.header__nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 41px;
+}
+
+.nav__list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav__link {
+  color: currentColor;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(12 / 14);
+  text-transform: uppercase;
+
+  color: var(--white);
+}
+
+.logo__link {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  transition: $animation;
+}
+
+.nav__link--current::after {
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+
+  content: '';
+  width: 35px;
+  height: 3px;
+  background-color: var(--red);
+}
+
+.nav__item {
+  position: relative;
+}
+
+.form__input {
+  border-style: none;
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+  color: var(--white);
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 1.14;
+
+    color: var(--white);
+  }
+}
+
+.form__icon {
+  color: var(--white);
+
+  transition-property: all;
+  transition: $animation;
+}
+
+.form__btn {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  background: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form {
+  max-width: 336px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 16px;
+  border-bottom: 0.5px solid var(--white);
+
+  transition-property: all;
+  transition: $animation;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 auto 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 394px;
+    margin: 0 auto 20px;
+  }
+}
+
+.logo__text {
+  display: none;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  color: currentColor;
+
+  @media screen and (min-width: 768px) {
+    display: inline;
+  }
+}
+
+.logo__icon {
+  color: currentColor;
+  @media screen and (min-width: 768px) {
+    margin-right: 10px;
+  }
+}
