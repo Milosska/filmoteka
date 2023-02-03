@@ -8,11 +8,12 @@
         data-id="{{id}}"
         loading="lazy"
         onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/488px-No-Image-Placeholder.svg.png';" />
-    <h2 class="movie-card__title">{{title}}</h2>
-    <p class="movie-card__text">
-        <span class="movie-card__genre">{{getGenres genre_ids}}</span>
-        <span class="movie-card__year">{{takeYearFromDate release_date}}</span>>
-        <span class="movie-card__vote_average">{{vote_average}}</span>>
-    </p>
+    <div class="movie-card__thumb">
+      <h2 class="movie-card__title">{{title}}</h2>
+      <p class="movie-card__text">
+          <span class="movie-card__genre">{{getGenres genre_ids}}</span>|<span class="movie-card__year">{{takeYearFromDate release_date}}</span>
+          <span class="movie-card__vote_average">{{trunc vote_average}}</span>
+      </p>
+    </div>
 </li>
 {{/each}}
