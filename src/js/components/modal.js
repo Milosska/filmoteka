@@ -26,12 +26,11 @@ btnModalTeam.addEventListener("click", onModalOpen);
 
 function onModalOpen(event) {
     myOverlay.hidden = false;
-  // modalTeam.hidden = true;
-  console.log(event.target);
-   if (event.target === myModal) {
-    myModal.hidden = false;
+   if (event.target === btnModalFilm) {
+     myModal.hidden = false;
+     modalTeam.hidden = true;
 
-  } else if (event.target === modalTeam) {
+  } else  {
     modalTeam.hidden = false;
   }
   document.addEventListener('keydown', (event) => {
@@ -55,6 +54,39 @@ myOverlay.addEventListener('click', () => {
 
 
 }
+
+
+// function onModalOpen(event) {
+//     myOverlay.hidden = false;
+//   // modalTeam.hidden = true;
+//   console.log(event.target);
+//    if (event.target === myModal) {
+//     myModal.hidden = false;
+
+//   } else if (event.target === modalTeam) {
+//     modalTeam.hidden = false;
+//   }
+//   document.addEventListener('keydown', (event) => {
+//        if (event.key === 'Escape') {
+//          myOverlay.hidden = true;
+//         myModal.hidden = true;
+//          modalTeam.hidden = true;
+       
+//        }
+//   });
+// myOverlay.addEventListener('click', () => {
+//   myOverlay.hidden = true; 
+//    myModal.hidden = true;
+//         modalTeam.hidden = true;
+// });
+//   modalClose.addEventListener('click', () => {
+//     myOverlay.hidden = true; 
+//     myModal.hidden = true;
+//         modalTeam.hidden = true;
+// });
+
+
+// }
 
 
 
