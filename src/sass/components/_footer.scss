@@ -1,1 +1,50 @@
 // Богдан Сало
+.footer__container {
+  @extend %container;
+  text-align: center;
+  background-color: var(--light-grey);
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.footer__text {
+  font-family: var(--main-font);
+  @include font-size(16, 19);
+  color: var(--dark-grey);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+
+  @include media(max, tablet) {
+    @include font-size(14, 16);
+    flex-wrap: wrap;
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.footer__element {
+  position: relative;
+  &--pseudo::after {
+    @include pseudo(1, 16);
+    display: inline-block;
+    background-color: var(--dark-grey);
+    position: absolute;
+    right: -5px;
+  }
+}
+
+.footer__svg{
+    fill: var(--orange);
+}
+
+.footer__link {
+  color: var(--dark-grey);
+  text-decoration: underline;
+  &:hover,
+  &:focus {
+    color: var(--orange);
+  }
+}
