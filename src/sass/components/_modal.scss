@@ -68,10 +68,8 @@
     top: 50%;
     left: 50%;
     width: 65vw;
-    // min-width: 806px;
     min-height: 558px;
     background-color: #fff;
-    // pointer-events: none;
     transform: translate(-50%, -50%);
     transition-property: opacity;
     transition-duration: 250ms;
@@ -113,3 +111,74 @@
     cursor: pointer;         
 }
 
+.modal_team{
+    @media screen and(min-width: 310px) and(max-width: 480px) {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 90vw;
+            height: 90vh;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+            transition-property: opacity;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+            transition-property: visibility;
+            transition-duration: 250ms;
+            transition: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+            margin: 0;
+        }
+    
+    
+        @media screen and(min-width: 481px) and(max-width: 768px) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90vw;
+            height: 90vh;
+            min-height: 552px;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+            transition-property: opacity;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(-50%, -50%);
+            transition: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+            margin: 0;
+        }
+    
+        @media screen and(min-width: 769px) and(max-width: 1199px) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90vw;
+            height: 90vh;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+            transition-property: opacity;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(-50%, -50%);
+            transition: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+            margin: 0;
+        }
+    
+        @media screen and(min-width: 1200px) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90vw;
+            height: 90vh;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+            transition-property: opacity;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(-50%, -50%);
+            transition-property: visibility;
+            transition-duration: 250ms;
+            transition: cubic-bezier(0.0, 0.0, 1.0, 1.0);
+            margin: 0;
+        }
+}
