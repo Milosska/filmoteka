@@ -1,8 +1,11 @@
 // Богдан Сало
+.footer {
+  background-color: var(--light-grey);
+}
+
 .footer__container {
   @extend %container;
   text-align: center;
-  background-color: var(--light-grey);
   align-items: center;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -36,8 +39,8 @@
   }
 }
 
-.footer__svg{
-    fill: var(--orange);
+.footer__svg {
+  fill: var(--orange);
 }
 
 .footer__link {
