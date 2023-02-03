@@ -1,28 +1,26 @@
 <!-- Тетяна Шмігель -->
 <header class="header">
-  <div class="header-container">
-    <nav class="header-nav">
-      <a href="" class="logo_link">
-        <svg class="logo_icon" width="24" height="24">
+  <div class="header__container">
+    <nav class="header__nav logo">
+      <a href="" class="logo__link">
+        <svg class="logo__icon" width="24" height="24">
           <use href="./images/svg-sprite.svg#logo"></use>
         </svg>
-        <span class="logo_text">Filmoteka</span>
-        <ul class="site-nav_list">
-          <li class="site-nav_item">
-            <a class="site-nav_link site-nav__link--current" href="./index.html"
-              >Home</a
-            >
+        <span class="logo__text">Filmoteka</span>
+        <ul class="header__nav-list nav__list">
+          <li class="nav__item">
+            <a class="nav__link nav__link--current" href="./index.html">Home</a>
           </li>
-          <li class="site-nav_item">
-            <a class="site-nav_link" href="./library.html">My library</a>
+          <li class="nav__item">
+            <a class="nav__link" href="./library.html">My library</a>
           </li>
         </ul>
       </a>
     </nav>
-    <form action="" class="form header__form">
-      <input class="header__input" type="text" placeholder="Movie search" />
-      <button class="submit-button" type="submit">
-        <svg class="submit__icon" width="12" height="12">
+    <form class="form">
+      <input class="form__input" type="text" placeholder="Movie search" />
+      <button class="form__btn" type="submit">
+        <svg class="form__icon" width="12" height="12">
           <use href="./images/svg-sprite.svg#search"></use>
         </svg>
       </button>

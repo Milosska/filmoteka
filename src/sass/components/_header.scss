@@ -29,7 +29,7 @@
   }
 }
 
-.header-container {
+.header__container {
   padding-left: 20px;
   padding-right: 20px;
   max-width: 1280px;
@@ -41,7 +41,7 @@
   }
 }
 
-.header-nav {
+.header__nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -49,13 +49,13 @@
   margin-bottom: 41px;
 }
 
-.site-nav_list {
+.nav__list {
   display: flex;
   gap: 40px;
   list-style: none;
 }
 
-.site-nav_link {
+.nav__link {
   color: currentColor;
   font-family: Roboto;
   font-style: normal;
@@ -67,14 +67,14 @@
   color: var(--white);
 }
 
-.logo_link {
+.logo__link {
   display: flex;
   align-items: center;
   color: var(--white);
   transition: $animation;
 }
 
-.site-nav__link--current::after {
+.nav__link--current::after {
   position: absolute;
   left: 0;
   bottom: -3px;
@@ -85,11 +85,11 @@
   background-color: var(--red);
 }
 
-.site-nav_item {
+.nav__item {
   position: relative;
 }
 
-.header__input {
+.form__input {
   border-style: none;
   background-color: transparent;
   width: 100%;
@@ -104,18 +104,19 @@
   }
 }
 
-.submit__icon {
+.form__icon {
   color: var(--white);
 
   transition-property: all;
   transition: $animation;
 }
 
-.submit-button {
+.form__btn {
   height: 20px;
   display: flex;
   align-items: center;
-  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
   border: none;
   background: none;
 
@@ -124,7 +125,7 @@
   }
 }
 
-.header__form {
+.form {
   max-width: 336px;
   display: flex;
   justify-content: space-between;
@@ -144,7 +145,7 @@
   }
 }
 
-.logo_text {
+.logo__text {
   display: none;
 
   font-family: 'Roboto';
@@ -159,7 +160,7 @@
   }
 }
 
-.logo_icon {
+.logo__icon {
   color: currentColor;
   @media screen and (min-width: 768px) {
     margin-right: 10px;

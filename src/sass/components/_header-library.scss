@@ -1,4 +1,4 @@
-.header_library {
+.header-library {
   padding-top: 40px;
   max-width: 100%;
   height: 230px;
@@ -29,7 +29,7 @@
   }
 }
 
-.header__container {
+.header-library__container {
   padding-left: 20px;
   padding-right: 20px;
   max-width: 1280px;
@@ -41,7 +41,7 @@
   }
 }
 
-.logo_library_text {
+.logo__text {
   display: none;
 
   font-family: 'Roboto';
@@ -56,7 +56,7 @@
   }
 }
 
-.header_library__nav {
+.header-library__nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -64,13 +64,13 @@
   margin-bottom: 40px;
 }
 
-.navigation {
+.site-nav {
   display: flex;
   gap: 40px;
   list-style: none;
 }
 
-.navigation-link {
+.site-nav__link {
   color: currentColor;
   font-weight: 500;
   font-size: 12px;
@@ -83,7 +83,7 @@
   transition: $animation;
 }
 
-.navigation-link--current::after {
+.site-nav__link--current::after {
   position: absolute;
   left: 0;
   bottom: -3px;
@@ -94,23 +94,8 @@
   background-color: var(--red);
 }
 
-.navigation-item {
+.site-nav__item {
   position: relative;
-}
-
-.logo-text {
-  display: none;
-
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
-  color: currentColor;
-
-  @media screen and (min-width: 768px) {
-    display: inline;
-  }
 }
 
 .logo__icon {
@@ -120,15 +105,17 @@
   }
 }
 
-.container-buttons {
+.header-library__btn {
   display: flex;
   justify-content: center;
-  padding-bottom: 60px;
+  gap: 16px;
 }
-.queueButton {
+.btn__queue,
+.btn__watched {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 
   width: 130px;
   height: 44px;
@@ -138,7 +125,7 @@
   color: var(--white);
   background-color: transparent;
 
-  gap: 10px;
+  // gap: 10px;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -159,56 +146,24 @@
 
   @media screen and (min-width: 768px) {
     width: 152px;
-    margin-right: 216px;
+    // margin-right: 216px;
   }
 
   @media screen and (min-width: 1280px) {
+    height: 42px;
     width: 148px;
-    margin-right: 485px;
+    // margin-right: 485px;
   }
 }
-.watchedButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// .btn__watched {
+//   @media screen and (min-width: 768px) {
+//    gap
+//     margin-right: 32px;
+//     margin-left: 216px;
+//   }
+//   @media screen and (min-width: 1280px) {
 
-  margin-right: 20px;
-  width: 128px;
-  height: 44px;
-
-  border: 1px solid var(--white);
-  border-radius: 5px;
-  color: var(--white);
-  background-color: transparent;
-
-  gap: 10px;
-
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  text-align: center;
-  text-transform: uppercase;
-
-  @media screen and (min-width: 768px) {
-    width: 152px;
-    margin-right: 32px;
-    margin-left: 216px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 148px;
-    height: 42;
-    margin-right: 16px;
-    margin-left: 485px;
-  }
-
-  transition-property: all;
-  transition: $animation;
-
-  &:hover,
-  &:focus {
-    background-color: var(--orange);
-    border-color: var(--orange);
-  }
-}
+//     margin-right: 16px;
+//     margin-left: 485px;
+//   }
+// }
