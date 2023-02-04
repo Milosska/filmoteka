@@ -32,4 +32,25 @@ async function fetchInfo(endpoint, ...params) {
   }
 }
 
-export { fetchInfo };
+function forParseGenres(array) {
+  const genres = localStorage.getItem('genres');
+  const parcedGenres = JSON.parse(genres);
+
+  let newArray = array.map(movie => {
+    const genresIdArray = movie.genre_ids;
+    let genresNameArray = [];
+
+    parcedGenres.forEach(genre => {
+      if (genresIdArray.includes(genre.id)) {
+        genresNameArray.push(' ' + genre.name);
+      }
+      return genresNameArray;
+    });
+
+    movie.genre_ids = genresNameArray;
+
+    return movie;
+  });
+}
+
+export { fetchInfo, forParseGenres };

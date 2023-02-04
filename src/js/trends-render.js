@@ -1,6 +1,6 @@
 // 1) Функція, що малює розмітку мейна при переході на сторінку або використанні пагінації - Ірина;
 
-import { fetchInfo } from './components/fetch.js';
+import { fetchInfo, forParseGenres } from './components/fetch.js';
 import cardsMarkupCreate from './components/card-render';
 import { createAPagination } from './pagination';
 
@@ -41,29 +41,6 @@ function storeGenres() {
 
 function clearMarkup() {
   mainList.innerHTML = '';
-}
-
-function forParseGenres(array) {
-  const genres = localStorage.getItem('genres');
-  const parcedGenres = JSON.parse(genres);
-
-  let newArray = array.map(movie => {
-    const genresIdArray = movie.genre_ids;
-    let genresNameArray = [];
-
-    parcedGenres.forEach(genre => {
-      if (genresIdArray.includes(genre.id)) {
-        genresNameArray.push(' ' + genre.name);
-      }
-      return genresNameArray;
-    });
-
-    movie.genre_ids = genresNameArray;
-
-    return movie;
-  });
-
-  console.log(newArray);
 }
 
 export { renderPageMarkup, reloadOnPageChange, clearMarkup };

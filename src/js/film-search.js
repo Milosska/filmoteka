@@ -1,40 +1,43 @@
 // 1) Функція, що шукає фільми за ключовим словом - Олег;
-import { fetchInfo } from "./components/fetch";
-// import Notiflix from 'notiflix';
-import filmListMarkup from '../templates/film-card.hbs';
-import filmCardMarkup from '../templates/film-card-mark.hbs'
+import { fetchInfo, forParseGenres } from './components/fetch';
+import cardsMarkupCreate from './components/card-render';
+// import filmListMarkup from '../templates/film-card.hbs';
+// import filmCardMarkup from '../templates/film-card-mark.hbs';
 
-
-
-const input = document.querySelector('.form__input');
+const formEl = document.querySelector('.form');
+const inputEl = document.querySelector('.form__input');
+const messageEl = document.querySelector('.form__message--error');
 const listFilm = document.querySelector('.main__list');
-input.addEventListener('submit',onFormSumbmit);
 let currentPage = 1;
 
-function onFormSumbmit(e) {
-  e.preventDefault();
-  currentPage = 1;
-  query = form.children[0].value.trim();
+formEl.addEventListener('submit', onFormSumbmit);
 
-  fetchInfo('keyword',query, currentPage)
-  .then(res => {
-    if(res.length === 1){
-      listFilm.insertAdjacentHTML('beforeend',filmCardMarkup(res));
-      return;
-    }
+function onFormSumbmit(evt) {
+  evt.preventDefault();
+  const query = inputEl.value.trim();
 
-    if(res.length >= 2 && res.length <= 10){
-      listFilm.insertAdjacentHTML('beforeend',filmListMarkup(res));
-      return;
-    }
+  fetchInfo('keyword', query, currentPage)
+    .then(({ results }) => {
+      if (results.length === 0) {
+        messageEl.removeAttribute('hidden');
+        return;
+      }
 
-  })
-  .catch(err => {
-    console.log(err);
-    Notiflix.Notify.failure(
-      'Search result not successful. Enter the correct movie name and ');
-    listFilm.innerHTML = '';  // посилання на популярні фільми
-    return;
-
-  });
+      forParseGenres(results);
+      listFilm.innerHTML = cardsMarkupCreate(results);
+      messageEl.setAttribute('hidden', true);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  currentPage += 1;
 }
+
+// if (res.length === 1) {
+//   listFilm.insertAdjacentHTML('beforeend', filmCardMarkup(res));
+//   return;
+// }
+// if (res.length >= 2 && res.length <= 10) {
+//   listFilm.insertAdjacentHTML('beforeend', filmListMarkup(res));
+//   return;
+// }

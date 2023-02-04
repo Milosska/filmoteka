@@ -89,6 +89,10 @@
   position: relative;
 }
 
+.form {
+  position: relative;
+}
+
 .form__input {
   border-style: none;
   background-color: transparent;
@@ -109,6 +113,14 @@
 
   transition-property: all;
   transition: $animation;
+}
+
+.form__message--error {
+  position: absolute;
+  top: 30px;
+  color: var(--red);
+  font-size: 14px;
+  line-height: 1.14;
 }
 
 .form__btn {

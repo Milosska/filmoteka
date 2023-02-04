@@ -19,6 +19,10 @@
     </nav>
     <form class="form">
       <input class="form__input" type="text" placeholder="Movie search" />
+      <p class="form__message form__message--error" hidden>
+        Search result not successful. Enter the correct movie name and try
+        again.
+      </p>
       <button class="form__btn" type="submit">
         <svg class="form__icon" width="12" height="12">
           <use href="./images/svg-sprite.svg#search"></use>
@@ -27,6 +31,3 @@
     </form>
   </div>
 </header>
-
-<!-- <p class="header__error-message" id="errorMessage">
- Search result not successful. Enter the correct movie name and try again. </p> -->
