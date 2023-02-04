@@ -11,6 +11,7 @@ const mainList = document.querySelector('.main__list');
 
 window.onload = function renderPageMarkup() {
   clearMarkup();
+  storeGenres();
   markupTrends();
 };
 
@@ -30,9 +31,16 @@ function markupTrends(page = 1) {
     .catch(error => console.log(error));
 }
 
+function storeGenres() {
+  fetchInfo('genres')
+    .then(data => {
+      localStorage.setItem('genres', JSON.stringify(data.genres));
+    })
+    .catch(error => console.log(error));
+}
+
 function clearMarkup() {
   mainList.innerHTML = '';
 }
-
 
 export { renderPageMarkup };
