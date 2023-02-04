@@ -1,11 +1,11 @@
 // <!-- Герман -->
 import Pagination from 'tui-pagination';
-import { fetchInfo } from './components/fetch';
 import { reloadOnPageChange, clearMarkup } from './components/trends-render';
 
-fetchInfo('keyword', 'Batman', 1).then(resp => createAPagination(resp));
-// В ФУНКЦИЮ ПЕРЕДАВАТЬ ОБЬЕКТ(resp), В КОТОРОМ НАХОДИТСЯ КОЛИЧЕСТВО ВСЕХ НАЙДЕННЫХ ЕЛЕМЕНТОВ, ТЕКУЩУЮ СТРАНИЦУ, КОТОРУЮ ОТОБРАЖАТЬ ПРИ ЗАГРУЗКЕ
 function createAPagination(data) {
+  if (data.total_results <= 20) {
+    return;
+  }
   const paganation = new Pagination(document.getElementById('pagination'), {
     page: data.page,
     totalItems: data.total_results,
