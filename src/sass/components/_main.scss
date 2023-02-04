@@ -1,12 +1,17 @@
 .main__container {
   @extend %container;
+}
+
+.main__list {
+  padding: 20px 0;
 
   @include media(min, tablet) {
-    @include flex(32px, top, left);
+    padding: 32px 0;
+    @include flex(32px, flex-start, top);
     flex-wrap: wrap;
   }
 
   @include media(min, desktop) {
-    @include flex(16px, top, left);
+    @include flex(15px, flex-start, top);
   }
 }

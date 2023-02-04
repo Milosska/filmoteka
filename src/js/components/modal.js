@@ -1,45 +1,44 @@
 // <!-- Люда Даценко та Тетяна Крамаренко -->
-const btnModalFilm = document.querySelector(".test__modal__film");
-const btnModalTeam = document.querySelector(".test__modal__team");
-const modalClose = document.querySelector(".modal__close");
-const myOverlay = document.querySelector(".overlay");
-const modalTeam = document.querySelector(".modal__team");
-const modalCard = document.querySelector(".modal__card");
+const filmlist = document.querySelector('.main__list');
+const teamLink = document.querySelector('.footer__link');
+const modalClose = document.querySelector('.modal__close');
+const myOverlay = document.querySelector('.overlay');
+const modalTeam = document.querySelector('.modal__team');
+const modalCard = document.querySelector('.modal__card');
 
-btnModalFilm.addEventListener("click", onModalOpen);
-btnModalTeam.addEventListener("click", onModalOpen);
+teamLink.addEventListener('click', onModalOpen);
+filmlist.addEventListener('click', onModalOpen);
+
+// btnModalFilm.addEventListener('click', onModalOpen);
 
 function onModalOpen(event) {
-  myOverlay.hidden = false;
-   if (event.target === btnModalFilm) {
-     modalCard.hidden = false;
-     modalTeam.hidden = true;
-    } else  {
-     modalTeam.hidden = false;
-   }
-  document.addEventListener('keydown', (event) => {
-     if (event.key === 'Escape') {
-        myOverlay.hidden = true;
-        modalCard.hidden = true;
-        modalTeam.hidden = true;
-      }
+  if (event.target === teamLink) {
+    myOverlay.hidden = false;
+    modalTeam.hidden = false;
+    modalCard.hidden = true;
+  }
+
+  if (event.target.classList.contains('movie-card__img')) {
+    myOverlay.hidden = false;
+    modalCard.hidden = false;
+    modalTeam.hidden = true;
+  }
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      hideAll();
+    }
   });
-   myOverlay.addEventListener('click', () => {
-     hideAll();
+  myOverlay.addEventListener('click', () => {
+    hideAll();
   });
-   modalClose.addEventListener('click', () => {
-     hideAll();
+  modalClose.addEventListener('click', () => {
+    hideAll();
   });
 }
 
-function hideAll(){
-  myOverlay.hidden = true; 
+function hideAll() {
+  myOverlay.hidden = true;
   modalCard.hidden = true;
   modalTeam.hidden = true;
 }
-
-
-
-
-
-

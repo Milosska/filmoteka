@@ -1,7 +1,21 @@
 .movie-card__thumb {
   position: relative;
 }
+
+.movie-card__img {
+  @include media(min, tablet) {
+    width: 336px;
+  }
+
+  @include media(min, desktop) {
+    width: 395px;
+    height: 634px;
+  }
+}
+
 .movie-card__title {
+  padding-top: 8px;
+
   @include font-size(12px, 16px);
   font-weight: 500;
   color: var(--black);
@@ -13,6 +27,8 @@
 
 .movie-card__text {
   @include flex(2, null);
+  padding-top: 5px;
+
   @include font-size(12px, 16px);
   font-weight: 500;
   color: var(--orange);
