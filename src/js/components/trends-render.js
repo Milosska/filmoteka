@@ -10,6 +10,9 @@ const mainList = document.querySelector('.main__list');
 // window.addEventListener('keydown', onEnterPress);
 
 window.onload = function renderPageMarkup() {
+  if (window.location.href.includes('library')) {
+    return;
+  }
   clearMarkup();
   storeGenres();
   markupTrends();
