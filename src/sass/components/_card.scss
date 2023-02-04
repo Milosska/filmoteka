@@ -1,3 +1,13 @@
+.movie-card__item {
+  @include media(min, tablet) {
+    width: 336px;
+  }
+
+  @include media(min, desktop) {
+    width: 395px;
+  }
+}
+
 .movie-card__thumb {
   position: relative;
 }
