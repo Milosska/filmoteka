@@ -1,0 +1,13 @@
+{{#each this}}
+<li class="movie-card__item">
+    <img class="movie-card__img" 
+        src="{{addBaseUrl poster_path}}"
+        alt="Poster {{title}}" 
+        width="100%" 
+        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/488px-No-Image-Placeholder.svg.png';" />
+    <h2 class="movie-card__title">{{title}}</h2>
+    <p class="movie-card__text">
+        <span class="movie-card__year">{{takeYearFromDate release_date}}</span>>
+    </p>
+</li>
+{{/each}}
