@@ -9,7 +9,7 @@ const WATCHED_KEY = 'watched';
 const QUEUE_KEY = 'queue';
 let currentKey = WATCHED_KEY;
 
-btn.addEventListener('click', onLibraryBtn);
+// btn.addEventListener('click', onLibraryBtn);
 
 function onLibraryBtn(evt) {
   if (evt.target.nodeName !== 'BUTTON') {

@@ -3,16 +3,16 @@
 // За натисканням на кнопку "Add to queue" фільм додається до черги поточного користувача (local-storage);
 
 const btn1 = document.querySelector('.btn__watched');
-btn1.addEventListener('click', addToWatchedLS);
+// btn1.addEventListener('click', addToWatchedLS);
 
 function addToWatchedLS() {
-    addToLS(movieObj, key);
-};
+  addToLS(movieObj, key);
+}
 
 // queue
 // watched
 
-let movieObj ;
+let movieObj;
 let key = 'watched';
 
 function addToLS(movieObj, key) {
@@ -25,12 +25,11 @@ function addToLS(movieObj, key) {
     return;
   } else {
     moviesSavedInLS = JSON.parse(moviesSavedInLS);
-      let map = moviesSavedInLS.map(movie => movie);
-      map.pop(savedMovie);
-      JSON.stringify(arrayToSaveMovies);
+    let map = moviesSavedInLS.map(movie => movie);
+    map.pop(savedMovie);
+    JSON.stringify(arrayToSaveMovies);
     if (moviesSavedInLS.length < 1) {
       localStorage.removeItem(key);
     }
   }
 }
-
