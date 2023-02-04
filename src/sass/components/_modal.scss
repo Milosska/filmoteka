@@ -77,3 +77,161 @@
     padding: 40px;
   }
 }
+
+// Модалка з фільмами //
+.modal__container {
+  position: relative;
+  max-width: 280px;
+  padding: 48px 20px;
+  background-color: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    max-width: 618px;
+    padding: 48px 28px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 882px;
+    padding: 48px 30px;
+  }
+}
+
+.modal__wrapper {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 32px;
+  }
+}
+
+.modal__image {
+  @media screen and (min-width: 768px) {
+    flex: 0 1 264px;
+    max-height: calc(100vh - 140px);
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex: 0 1 396px;
+  }
+}
+.modal__img {
+  border-radius: 5px;
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-bottom: 30px;
+  }
+}
+
+.modal__content {
+  color: #000000;
+
+  @media screen and (min-width: 768px) {
+    flex: 1 1 calc(100% - 296px);
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex: 1 1 calc(100% - 428px);
+  }
+
+  .modal__title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  button {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    height: 44px;
+    text-transform: uppercase;
+    color: #000000;
+    flex-basis: 50%;
+    border-radius: 5px;
+    padding: 6px 14px 6px 12px;
+    border: 1px solid #000000;
+    transition: all 0.3s linear;
+
+    &.active,
+    &:hover {
+      color: #fff;
+      background-color: #ff6b01;
+      border-color: transparent;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.modal__info {
+  margin-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: 500;
+
+  .film__title {
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #8c8c8c;
+    flex: 0 1 108px;
+    margin-bottom: 10px;
+  }
+
+  .film__content {
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 12px;
+    line-height: 14px;
+    flex: 0 1 calc(100% - 108px);
+    display: inline-block;
+    padding: 1px 8px;
+    color: #ffffff;
+    background: #ff6b01;
+    border-radius: 5px;
+  }
+}
+.film__plot {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+.button__row {
+  max-width: 287px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
