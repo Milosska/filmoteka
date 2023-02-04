@@ -1,6 +1,6 @@
 // <!-- Герман -->
 import Pagination from 'tui-pagination';
-import { reloadOnPageChange, clearMarkup } from './components/trends-render';
+import { reloadOnPageChange, clearMarkup } from './trends-render';
 
 function createAPagination(data) {
   if (data.total_results <= 20) {

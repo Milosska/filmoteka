@@ -1,14 +1,10 @@
 // 1) Функція, що малює розмітку мейна при переході на сторінку або використанні пагінації - Ірина;
 
-import { fetchInfo } from './fetch.js';
-import cardsMarkupCreate from './card-render';
-import { createAPagination } from '../pagination';
+import { fetchInfo } from './components/fetch.js';
+import cardsMarkupCreate from './components/card-render';
+import { createAPagination } from './pagination';
 
 const mainList = document.querySelector('.main__list');
-// const formBtn = document.querySelector('.form__btn');
-
-// formBtn.addEventListener('click', renderPageMarkup);
-// window.addEventListener('keydown', onEnterPress);
 
 window.onload = function renderPageMarkup() {
   if (window.location.href.includes('library')) {
@@ -20,7 +16,6 @@ window.onload = function renderPageMarkup() {
 };
 
 function reloadOnPageChange(page) {
-  console.log(page);
   markupTrends(page);
 }
 
