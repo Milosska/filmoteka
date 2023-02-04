@@ -9,13 +9,24 @@ const inputEl = document.querySelector('.form__input');
 const messageEl = document.querySelector('.form__message--error');
 const listFilm = document.querySelector('.main__list');
 let currentPage = 1;
+let query = '';
 
-formEl.addEventListener('submit', onFormSumbmit);
+window.onload = function filmSearch() {
+  if (!formEl) {
+    return;
+  }
+
+  formEl.addEventListener('submit', onFormSumbmit);
+};
 
 function onFormSumbmit(evt) {
   evt.preventDefault();
-  const query = inputEl.value.trim();
+  query = inputEl.value.trim();
 
+  searchByQuery(query);
+}
+
+function searchByQuery(query) {
   fetchInfo('keyword', query, currentPage)
     .then(({ results }) => {
       if (results.length === 0) {
