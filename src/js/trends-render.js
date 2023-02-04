@@ -24,6 +24,7 @@ function markupTrends(page = 1) {
     .then(data => {
       createAPagination(data);
       localStorage.setItem('current-films', JSON.stringify(data.results));
+      forParseGenres(data.results);
       const markup = cardsMarkupCreate(data.results);
       mainList.insertAdjacentHTML('beforeend', markup);
     })
@@ -40,6 +41,29 @@ function storeGenres() {
 
 function clearMarkup() {
   mainList.innerHTML = '';
+}
+
+function forParseGenres(array) {
+  const genres = localStorage.getItem('genres');
+  const parcedGenres = JSON.parse(genres);
+
+  let newArray = array.map(movie => {
+    const genresIdArray = movie.genre_ids;
+    let genresNameArray = [];
+
+    parcedGenres.forEach(genre => {
+      if (genresIdArray.includes(genre.id)) {
+        genresNameArray.push(' ' + genre.name);
+      }
+      return genresNameArray;
+    });
+
+    movie.genre_ids = genresNameArray;
+
+    return movie;
+  });
+
+  console.log(newArray);
 }
 
 export { renderPageMarkup, reloadOnPageChange, clearMarkup };

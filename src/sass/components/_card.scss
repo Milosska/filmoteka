@@ -8,9 +8,9 @@
   }
 }
 
-.movie-card__thumb {
-  position: relative;
-}
+// .movie-card__thumb {
+//   position: relative;
+// }
 
 .movie-card__img {
   @include media(min, tablet) {
@@ -35,8 +35,15 @@
   }
 }
 
+.movie-card__genre {
+  margin-right: 8px;
+}
+
+.movie-card__year {
+  margin: 0 8px;
+}
+
 .movie-card__text {
-  @include flex(2, null);
   padding-top: 5px;
 
   @include font-size(12px, 16px);
@@ -49,13 +56,12 @@
 }
 
 .movie-card__vote_average {
-  @include position(absolute, top, -21px, right, 5px);
-  @include flex(0);
+  // @include flex(0);
+  padding: 3px 12px;
   width: 36px;
-  height: 16px;
+  height: 20px;
   @include font-size(12px, 14px);
   color: var(--white);
   background-color: var(--orange);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
