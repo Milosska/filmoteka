@@ -2,6 +2,7 @@
 
 import { fetchInfo } from './fetch.js';
 import cardsMarkupCreate from './card-render';
+import { createAPagination } from '../pagination';
 
 const mainList = document.querySelector('.main__list');
 // const formBtn = document.querySelector('.form__btn');
@@ -19,14 +20,14 @@ window.onload = function renderPageMarkup() {
 };
 
 function reloadOnPageChange(page) {
-  // 1)Додати прослуховувач подій на кнопку, що відповідає за зміну сторінки;
-  // 2) Зчитати номер сторінки з кнопки;
-  // 3) Передати цей номер у функцію markupTrends.
+  console.log(page);
+  markupTrends(page);
 }
 
 function markupTrends(page = 1) {
-  fetchInfo('trends', 1)
+  fetchInfo('trends', page)
     .then(data => {
+      createAPagination(data);
       localStorage.setItem('current-films', JSON.stringify(data.results));
       const markup = cardsMarkupCreate(data.results);
       mainList.insertAdjacentHTML('beforeend', markup);
@@ -46,4 +47,4 @@ function clearMarkup() {
   mainList.innerHTML = '';
 }
 
-export { renderPageMarkup };
+export { renderPageMarkup, reloadOnPageChange, clearMarkup };
