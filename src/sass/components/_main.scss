@@ -1,5 +1,6 @@
 .main__container {
   @extend %container;
+  min-height: 70vh;
 }
 
 .main__list {
