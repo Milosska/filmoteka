@@ -9,7 +9,9 @@ const WATCHED_KEY = 'watched';
 const QUEUE_KEY = 'queue';
 let currentKey = WATCHED_KEY;
 
-btn.addEventListener('click', onLibraryBtn);
+if (window.location.href.includes('library')) {
+  btn.addEventListener('click', onLibraryBtn);
+}
 
 getMoviesFromLS(currentKey);
 
