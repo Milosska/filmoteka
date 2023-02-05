@@ -5,11 +5,11 @@ const refs = {
 
 const spinner = {
   show() {
-    refs.spinner.classList.remove('is-hidden');
+    refs.spinner.classList.remove('visually-hidden');
   },
 
   hide() {
-    refs.spinner.classList.add('is-hidden');
+    refs.spinner.classList.add('visually-hidden');
   },
 };
 
