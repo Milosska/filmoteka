@@ -1,6 +1,6 @@
 // <!-- Герман -->
 import Pagination from 'tui-pagination';
-import { reloadOnPageChange, clearMarkup } from './trends-render';
+import { reloadOnPageChange, clearMarkup } from './films-render';
 
 function createAPagination(data) {
   if (data.total_results <= 20) {
