@@ -1,4 +1,5 @@
 // <!-- Люда Даценко та Тетяна Крамаренко -->
+import { onModalBtnClick } from './add-btn';
 import filmMarkup from '../../templates/film-modal.hbs';
 
 const modalClose = document.querySelectorAll('.modal__close');
@@ -60,6 +61,7 @@ function onModalOpen(event) {
     parsedFilms.forEach(film => {
       if (Number(film.id) === Number(event.target.dataset.id)) {
         modalWrapper.innerHTML = filmMarkup(film);
+        onModalBtnClick(film);
       }
     });
   }
