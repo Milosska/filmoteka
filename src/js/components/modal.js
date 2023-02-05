@@ -9,7 +9,7 @@ const modalCard = document.querySelector('.modal__card');
 const scrollController = {
   scrollPosition: 0,
   disabledScroll() {
-    scrollController.scrollPosition = window.scrollY; //чтоб не прыгало вверх
+    scrollController.scrollPosition = window.scrollY; //щоб не підскакувало вверх при закритті модалки
 
     // забороняємо скрол
     document.body.style.cssText = `
@@ -59,7 +59,11 @@ function onModalOpen(event) {
     }
   });
 
-  myOverlay.addEventListener('click', hideAll);
+  myOverlay.addEventListener('click', e => {
+    if (e.target == myOverlay) {
+      hideAll();
+    }
+  });
   modalClose.addEventListener('click', hideAll);
 }
 
