@@ -1,4 +1,10 @@
 .movie-card__item {
+  @include media(max, tablet) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
   @include media(min, tablet) {
     width: 336px;
   }
