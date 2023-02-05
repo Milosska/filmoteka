@@ -79,8 +79,6 @@
 }
 
 // Модалка з фільмами //
-
-// Модалка з фільмами //
 .content-hidden {
   overflow: hidden;
 }
@@ -107,15 +105,6 @@
   opacity: 1;
   pointer-events: initial;
   z-index: 998;
-}
-
-.modal-one-film__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 127%;
-  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .modal-one-film.open .modal-one-film__content {
