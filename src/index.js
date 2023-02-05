@@ -1,7 +1,6 @@
 import './js/components/add-btn';
 import './js/components/card-render';
 import './js/components/fetch';
-import './js/components/film-modal-render';
 import './js/films-render';
 import './js/components/modal';
 import './js/components/spinner';

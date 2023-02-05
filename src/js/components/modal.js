@@ -1,10 +1,12 @@
 // <!-- Люда Даценко та Тетяна Крамаренко -->
-const filmlist = document.querySelector('.main__list');
-const teamLink = document.querySelector('.footer__link');
+import filmMarkup from '../../templates/film-modal.hbs';
+
 const modalClose = document.querySelectorAll('.modal__close');
 const myOverlay = document.querySelector('.overlay');
 const modalTeam = document.querySelector('.modal__team');
 const modalCard = document.querySelector('.modal__card');
+const filmlist = document.querySelector('.main__list');
+const teamLink = document.querySelector('.footer__link');
 
 const scrollController = {
   scrollPosition: 0,
@@ -50,6 +52,16 @@ function onModalOpen(event) {
     myOverlay.hidden = false;
     modalCard.hidden = false;
     modalTeam.hidden = true;
+
+    const modalWrapper = document.querySelector('.movie');
+    let currentFilms = localStorage.getItem('current-films');
+    let parsedFilms = JSON.parse(currentFilms);
+
+    parsedFilms.forEach(film => {
+      if (Number(film.id) === Number(event.target.dataset.id)) {
+        modalWrapper.innerHTML = filmMarkup(film);
+      }
+    });
   }
 
   document.addEventListener('keydown', event => {
