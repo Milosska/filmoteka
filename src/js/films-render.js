@@ -24,7 +24,7 @@ window.onload = function renderPageMarkup() {
   clearMarkup();
   spinner.show();
   storeGenres();
-  markupTrends();
+  searchByQuery();
 };
 
 // Завантаження жанрів у локальне сховище
@@ -36,40 +36,42 @@ function storeGenres() {
     .catch(error => console.log(error));
 }
 
-// Завантаження фільмів за трендами
-function markupTrends(page = 1) {
-  fetchInfo('trends', page)
-    .then(data => {
-      createAPagination(data);
-      resultProcessing(data.results);
-    })
-    .catch(error => console.log(error));
-}
-
 // Обробка події сабміта
 function onFormSumbmit(evt) {
   evt.preventDefault();
   query = inputEl.value.trim();
-
+  currentPage = 1;
   searchByQuery(query);
 }
 
 // Пошук фільмів за ключовим словом
 function searchByQuery(query) {
+  spinner.show();
+  if (!query) {
+    fetchInfo('trends', currentPage)
+      .then(data => {
+        createAPagination(data);
+        resultProcessing(data.results);
+      })
+      .catch(error => console.log(error));
+    return;
+  }
+
   fetchInfo('keyword', query, currentPage)
-    .then(({ results }) => {
-      if (results.length === 0) {
+    .then(data => {
+      if (data.results.length === 0) {
         messageEl.removeAttribute('hidden');
         return;
       }
+      createAPagination(data);
 
-      resultProcessing(results);
+      resultProcessing(data.results);
       messageEl.setAttribute('hidden', true);
     })
     .catch(err => {
       console.log(err);
     });
-  currentPage += 1;
+  spinner.hide();
 }
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
@@ -86,7 +88,8 @@ function clearMarkup() {
 }
 
 function reloadOnPageChange(page) {
-  markupTrends(page);
+  currentPage = page;
+  searchByQuery(query);
 }
 
 export { renderPageMarkup, reloadOnPageChange, clearMarkup, searchByQuery };
