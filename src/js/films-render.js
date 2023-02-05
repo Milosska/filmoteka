@@ -36,11 +36,6 @@ function storeGenres() {
     .catch(error => console.log(error));
 }
 
-// Завантаження фільмів за трендами
-// function markupTrends() {
-
-// }
-
 // Обробка події сабміта
 function onFormSumbmit(evt) {
   evt.preventDefault();
@@ -51,6 +46,7 @@ function onFormSumbmit(evt) {
 
 // Пошук фільмів за ключовим словом
 function searchByQuery(query) {
+  spinner.show();
   if (!query) {
     fetchInfo('trends', currentPage)
       .then(data => {
@@ -75,6 +71,7 @@ function searchByQuery(query) {
     .catch(err => {
       console.log(err);
     });
+  spinner.hide();
 }
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
