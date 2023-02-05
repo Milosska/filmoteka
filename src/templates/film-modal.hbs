@@ -1,1 +1,50 @@
 {{! Алекс Гусляков }}
+<div class='movie__cont'>
+  <div class='movie__img'>
+    {{this.poster_path}}
+    <img
+      src='https://image.tmdb.org/t/p/w780{{poster_path}}'
+      alt={{title}}
+      class='movie__poster'
+    />
+
+  </div>
+  <div class='movie__text'>
+    <h3 class='movie__name'>{{original_title}}</h3>
+    <div class='movie__info'>
+      <div class='movie__title'>
+        <p>Vote / Votes</p>
+        <p>Popularity</p>
+        <p>Original Title</p>
+        <p>Genre</p>
+      </div>
+
+      <div class='movie__info'>
+        <p><span class='number'>{{vote_average}}</span> / {{vote_count}}</p>
+        <p>{{popularity}}</p>
+        <p>{{original_title}}</p>
+        <p>{{#each genre_ids}}<span
+              class='movie__genres'
+            >{{this}},</span>{{/each}}</p>
+      </div>
+    </div>
+
+    <h4 class='movie__about'>About</h4>
+    <p class='movie__film-about'>{{overview}}</p>
+
+    <div class='movie__button-block'>
+      <button
+        type='button'
+        class='movie__button add-to-watched'
+        data-idFilm='{{id}}'
+        data-btn='watched'
+      >Add to watched</button>
+      <button
+        type='button'
+        class='movie__button add-to-queue'
+        data-idFilm='{{id}}'
+        data-btn='queue'
+      >Add to queue</button>
+    </div>
+  </div>
+</div>
