@@ -39,7 +39,7 @@ function onModalBtnClick(movieObj) {
       localStorage.setItem(key, JSON.stringify(filmArray));
       return;
     }
-    parcedMovies = JSON.parse(moviesSavedInLS);
+    let parcedMovies = JSON.parse(moviesSavedInLS);
     // Перевірка на наявність фільму в листах
     let sameMoviesArray = [];
     parcedMovies.forEach(movie => {
