@@ -1,7 +1,7 @@
 // <!-- Люда Даценко та Тетяна Крамаренко -->
 const filmlist = document.querySelector('.main__list');
 const teamLink = document.querySelector('.footer__link');
-const modalClose = document.querySelector('.modal__close');
+const modalClose = document.querySelectorAll('.modal__close');
 const myOverlay = document.querySelector('.overlay');
 const modalTeam = document.querySelector('.modal__team');
 const modalCard = document.querySelector('.modal__card');
@@ -60,12 +60,13 @@ function onModalOpen(event) {
   });
 
   myOverlay.addEventListener('click', e => {
-    if (e.target == myOverlay) {
+    if (e.target === myOverlay) {
       hideAll();
     }
   });
-  modalClose.addEventListener('click', hideAll);
 }
+
+modalClose.forEach(btn => btn.addEventListener('click', hideAll));
 
 function hideAll() {
   scrollController.enabledScroll();
