@@ -1,4 +1,4 @@
-//<!-- Ярослав Михайлов -->
+//<!-- Ярослав Михайлов  -->
 const refs = {
   spinner: document.querySelector('.spinner'),
 };
