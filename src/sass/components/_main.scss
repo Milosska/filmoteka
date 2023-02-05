@@ -44,7 +44,6 @@
   position: relative;
   width: 28px;
   padding: 8px 0 6px;
-  margin-left: 0;
   color: #333;
   font-size: 12px;
   font-weight: 700;
@@ -77,16 +76,25 @@
   margin-left: 0;
 }
 
-.tui-pagination .tui-first,
 .tui-pagination .tui-prev,
 .tui-pagination .tui-next,
-.tui-pagination .tui-last,
 .tui-pagination .tui-prev-is-ellip,
 .tui-pagination .tui-next-is-ellip {
   overflow: hidden;
   height: 26px;
   padding: 0;
   font-size: 0;
+  line-height: 26px;
+  white-space: nowrap;
+  font-weight: normal;
+  text-align: center;
+}
+
+.tui-pagination .tui-last,
+.tui-pagination .tui-first {
+  overflow: hidden;
+  height: 26px;
+  padding: 0;
   line-height: 26px;
   white-space: nowrap;
   font-weight: normal;
@@ -105,8 +113,7 @@
 .tui-pagination .tui-next + .tui-last {
   border-left: 0;
 }
-.tui-pagination .tui-ico-first,
-.tui-pagination .tui-ico-last,
+
 .tui-pagination .tui-ico-prev,
 .tui-pagination .tui-ico-next,
 .tui-pagination .tui-ico-ellip {
