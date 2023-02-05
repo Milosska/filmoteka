@@ -8,43 +8,75 @@ function onModalBtnClick(movieObj) {
   const WATCHED_KEY = 'watched';
   const QUEUE_KEY = 'queue';
   let key = WATCHED_KEY;
-
   if (moviecard.length >= 1) {
     btnContEl.addEventListener('click', onBtnClick);
   }
-
   function onBtnClick(evt) {
     if (evt.target.nodeName !== 'BUTTON') {
       return;
     }
-
-    console.log('Hello!');
-
     if (evt.target.textContent.toUpperCase() === 'ADD TO QUEUE') {
       key = QUEUE_KEY;
     } else if (evt.target.textContent.toUpperCase() === 'ADD TO WATCHED') {
       key = WATCHED_KEY;
     }
-
-    addToLS(movieObj, key);
+    if (evt.target.classList.contains('is-active')) {
+      removeToLS(movieObj, key);
+    } else {
+      addToLS(movieObj, key);
+    }
+    // LS check
+    evt.target.classList.toggle('is-active');
+    toggleBtnText(evt.target, key);
+    // try set class
   }
-
+  // Функція, що додає фільм до локального сховища
   function addToLS(movieObj, key) {
-    const savedMovie = movieObj;
-    let arrayToSaveMovies = [];
     let moviesSavedInLS = localStorage.getItem(key);
     if (!moviesSavedInLS) {
-      arrayToSaveMovies.push(savedMovie);
-      localStorage.setItem(key, JSON.stringify(arrayToSaveMovies));
+      let filmArray = [];
+      filmArray.push(movieObj);
+      localStorage.setItem(key, JSON.stringify(filmArray));
       return;
-    } else {
-      moviesSavedInLS = JSON.parse(moviesSavedInLS);
-      let map = moviesSavedInLS.map(movie => movie);
-      map.pop(savedMovie);
-      JSON.stringify(arrayToSaveMovies);
-      if (moviesSavedInLS.length < 1) {
-        localStorage.removeItem(key);
+    }
+    parcedMovies = JSON.parse(moviesSavedInLS);
+    // Перевірка на наявність фільму в листах
+    let sameMoviesArray = [];
+    parcedMovies.forEach(movie => {
+      if (movie.id === movieObj.id) {
+        sameMoviesArray.push(movie);
+        // Дописати повідомлення "This movie is already in the watched/gueue list"
+        return;
       }
+    });
+    if (sameMoviesArray.length >= 1) {
+      return;
+    }
+    // Кінець перевірки
+    parcedMovies.unshift(movieObj);
+    localStorage.setItem(key, JSON.stringify(parcedMovies));
+  }
+  // Функція, що забирає фільм з локального сховища
+  function removeToLS(movieObj, key) {
+    let moviesSavedInLS = localStorage.getItem(key);
+    parcedMovies = JSON.parse(moviesSavedInLS);
+    if (!parcedMovies) {
+      return;
+    }
+    let renewedMoviesArray = [];
+    parcedMovies.forEach(movie => {
+      if (movie.id !== movieObj.id) {
+        renewedMoviesArray.push(movie);
+      }
+    });
+    localStorage.setItem(key, JSON.stringify(renewedMoviesArray));
+  }
+  // Функція, що змінює текстовий контент кнопок
+  function toggleBtnText(btn, key) {
+    if (btn.classList.contains('is-active')) {
+      btn.textContent = `In ${key}`;
+    } else {
+      btn.textContent = `Add to ${key}`;
     }
   }
 }
