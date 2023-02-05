@@ -59,7 +59,7 @@ function onModalBtnClick(movieObj) {
   // Функція, що забирає фільм з локального сховища
   function removeToLS(movieObj, key) {
     let moviesSavedInLS = localStorage.getItem(key);
-    parcedMovies = JSON.parse(moviesSavedInLS);
+    let parcedMovies = JSON.parse(moviesSavedInLS);
     if (!parcedMovies) {
       return;
     }
