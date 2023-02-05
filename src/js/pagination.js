@@ -6,6 +6,7 @@ function createAPagination(data) {
   if (data.total_results <= 20) {
     return;
   }
+
   const paganation = new Pagination(document.getElementById('pagination'), {
     page: data.page,
     totalItems: data.total_results,
@@ -31,11 +32,12 @@ function createAPagination(data) {
         '</a>',
     },
   });
+  console.log(data);
   paganation.on('afterMove', ({ page }) => {
-    const currentPage = page;
+    // currentPage = page;
     try {
       clearMarkup();
-      reloadOnPageChange(currentPage);
+      reloadOnPageChange(page);
     } catch (error) {
       console.log(error);
     }
