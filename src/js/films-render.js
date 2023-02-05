@@ -76,8 +76,8 @@ function searchByQuery(query) {
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
 function resultProcessing(array) {
-  localStorage.setItem('current-films', JSON.stringify(array));
   forParseGenres(array);
+  localStorage.setItem('current-films', JSON.stringify(array));
   mainList.innerHTML = cardsMarkupCreate(array);
   spinner.hide();
 }
