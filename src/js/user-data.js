@@ -21,12 +21,12 @@ function onLibraryBtn(evt) {
   }
   if (evt.target.textContent.toUpperCase() === 'QUEUE') {
     currentKey = QUEUE_KEY;
-    console.log(btn.lastElementChild.classList.add('is-active'));
-    console.log(btn.firstElementChild.classList.remove('is-active'));
+    btn.lastElementChild.classList.add('is-active');
+    btn.firstElementChild.classList.remove('is-active');
   } else if (evt.target.textContent.toUpperCase() === 'WATCHED') {
     currentKey = WATCHED_KEY;
-    console.log(btn.firstElementChild.classList.add('is-active'));
-    console.log(btn.lastElementChild.classList.remove('is-active'));
+    btn.firstElementChild.classList.add('is-active');
+    btn.lastElementChild.classList.remove('is-active');
   }
   getMoviesFromLS(currentKey);
 }
