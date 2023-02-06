@@ -6,3 +6,4 @@ import './js/components/modal';
 import './js/components/spinner';
 import './js/pagination';
 import './js/user-data';
+import './js/toggle-theme';

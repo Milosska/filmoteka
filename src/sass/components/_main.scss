@@ -1,10 +1,10 @@
-body{
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-.main{
+.main {
   flex-grow: 1;
 }
 
@@ -194,4 +194,8 @@ body{
   font-size: 12px;
   height: 12px;
   padding: 8px 0 6px;
+}
+
+.main__container.dark {
+  background-color: var(--dark-grey);
 }
