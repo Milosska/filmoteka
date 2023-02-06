@@ -51,7 +51,7 @@ body{
 .tui-pagination .tui-page-btn {
   display: inline-block;
   position: relative;
-  width: 28px;
+  width: 35px;
   padding: 8px 0 6px;
   color: #333;
   font-size: 12px;
@@ -62,6 +62,10 @@ body{
   text-align: center;
   border-radius: 5px;
   border-width: 1px 0;
+  @include media(max, phone) {
+    width: 25px;
+    font-size: 10px;
+  }
 }
 .tui-pagination .tui-page-btn:hover {
   background-color: #f4f4f4;
