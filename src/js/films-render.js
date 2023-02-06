@@ -62,8 +62,8 @@ function searchByQuery(query) {
     .then(data => {
       if (data.results.length === 0) {
         messageEl.removeAttribute('hidden');
-        window.setTimeout(slowMessageEl,1500);
-        searchByQuery();
+        window.setTimeout(timeoutMessageEl,2500);
+        window.setTimeout(timeoutTrend,2500);
         return;
       }
       createAPagination(data);
@@ -77,10 +77,13 @@ function searchByQuery(query) {
 }
 
 
-function slowMessageEl() {
+function timeoutMessageEl() {
   messageEl.setAttribute('hidden', true);
 }
 
+function timeoutTrend() {
+  searchByQuery();
+}
 
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
