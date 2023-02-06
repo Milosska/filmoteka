@@ -2,6 +2,10 @@
 // За натисканням на кнопку "Add to watched" фільм додається до переглянутих фільмів поточного користувача (local-storage);
 // За натисканням на кнопку "Add to queue" фільм додається до черги поточного користувача (local-storage);
 
+import cardsMarkupCreate from './card-render';
+
+const mainList = document.querySelector('.main__list');
+
 function onModalBtnClick(movieObj) {
   const btnContEl = document.querySelector('.movie__buttons');
   const moviecard = document.querySelectorAll('.movie-card__img');
@@ -76,9 +80,10 @@ function onModalBtnClick(movieObj) {
       }
     });
     localStorage.setItem(key, JSON.stringify(renewedMoviesArray));
+    
+    mainList.innerHTML = cardsMarkupCreate(renewedMoviesArray);
   }
 }
-
 // Функція, що змінює текстовий контент кнопок
 function toggleBtnText(btn, key) {
   if (btn.classList.contains('is-active')) {
