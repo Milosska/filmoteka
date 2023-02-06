@@ -1,0 +1,33 @@
+
+.scroll__up{
+   position: fixed;
+    background: transparent;
+    bottom: 2%;
+    right: 2%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    fill: var(--red);
+    background-color :var(--dark-grey);
+    border-radius: 50%;
+    opacity: 0.5;
+
+    @include media(min, tablet) {
+    right: 1.5%;
+    bottom: 1%;
+    }
+   
+    &:hover {
+        fill: var(--orange);
+        background-color: var(--black);
+        opacity: 1;
+        @include animation-l(fill, background-color, opacity);
+    }
+
+    &:not(:hover) {
+        @include animation-l(fill, background-color, opacity);
+    }
+}
