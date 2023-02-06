@@ -21,11 +21,12 @@
 .movie-card__img {
   @include media(min, tablet) {
     width: 336px;
+    height: 455px;
   }
 
   @include media(min, desktop) {
     width: 395px;
-    height: 634px;
+    height: 574px;
   }
 }
 
