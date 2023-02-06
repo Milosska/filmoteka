@@ -1,5 +1,5 @@
 // <!-- Герман -->
-import Pagination from 'tui-pagination';
+import Pagination from './tui-pagination';
 import { reloadOnPageChange, clearMarkup } from './films-render';
 
 function createAPagination(data) {
