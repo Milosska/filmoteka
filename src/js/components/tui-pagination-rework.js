@@ -2055,7 +2055,7 @@
             _appendFirstButton: function (viewData) {
               var button;
 
-              if (viewData.page > 1) {
+              if (viewData.page > 3) {
                 button = this._buttons.first;
               } else {
                 button = this._buttons.disabledFirst;
@@ -2115,11 +2115,10 @@
             _appendLastButton: function (viewData) {
               var button;
 
-              if (viewData.page < viewData.lastPage) {
+              if (viewData.page + 2 < viewData.lastPage) {
                 button = this._buttons.last;
               } else {
                 button = this._buttons.disabledLast;
-                button.disabled = true;
               }
               button.firstChild.textContent = viewData.lastPage;
 
