@@ -1,15 +1,18 @@
-// <!-- Люда Даценко та Тетяна Крамаренко -->
 import { onModalBtnClick, toggleBtnText } from './add-btn';
 import filmMarkup from '../../templates/film-modal.hbs';
+
 const Handlebars = require('handlebars');
 
-const modalClose = document.querySelectorAll('.modal__close');
+// Елементи, де лежать модалки
+const teamLink = document.querySelector('.footer__link');
+const filmlist = document.querySelector('.main__list');
+// Складові модалок
 const myOverlay = document.querySelector('.overlay');
 const modalTeam = document.querySelector('.modal__team');
 const modalCard = document.querySelector('.modal__card');
-const filmlist = document.querySelector('.main__list');
-const teamLink = document.querySelector('.footer__link');
+const modalClose = document.querySelectorAll('.modal__close');
 
+// Скролл
 const scrollController = {
   scrollPosition: 0,
   disabledScroll() {
@@ -37,46 +40,48 @@ const scrollController = {
 teamLink.addEventListener('click', onModalOpen);
 filmlist.addEventListener('click', onModalOpen);
 
-// btnModalFilm.addEventListener('click', onModalOpen);
-
+// Колбек-функція
 function onModalOpen(event) {
+  // 1) Модалка у футері
   if (event.target === teamLink) {
     scrollController.disabledScroll();
-
-    myOverlay.hidden = false;
-    modalTeam.hidden = false;
-    modalCard.hidden = true;
+    addHiddenAtribute(modalCard);
   }
 
+  // 2) Модалка з фільмом
   if (event.target.classList.contains('movie-card__img')) {
     scrollController.disabledScroll();
-
-    myOverlay.hidden = false;
-    modalCard.hidden = false;
-    modalTeam.hidden = true;
+    addHiddenAtribute(modalTeam);
 
     const modalWrapper = document.querySelector('.movie');
     let currentFilms = localStorage.getItem('current-films');
     let parsedFilms = JSON.parse(currentFilms);
 
     parsedFilms.forEach(film => {
-      if (Number(film.id) === Number(event.target.dataset.id)) {
-        Handlebars.registerHelper(
-          'checkOverviewForNull',
-          function (movieAbout) {
-            return movieAbout
-              ? movieAbout
-              : 'Sorry, but review absent for this movie 😥';
-          }
-        );
-
-        modalWrapper.innerHTML = filmMarkup(film);
-        activateModalBtnStatus(film);
-        onModalBtnClick(film);
+      // Перевірка на відповідність фільма
+      if (Number(film.id) !== Number(event.target.dataset.id)) {
+        return;
       }
+
+      // Плейсхолдер для секції "About"
+      Handlebars.registerHelper('checkOverviewForNull', function (movieAbout) {
+        return movieAbout
+          ? movieAbout
+          : 'Sorry, but review absent for this movie 😥';
+      });
+
+      // Відмальовка начинки модалки
+      modalWrapper.innerHTML = filmMarkup(film);
+
+      // Активація стану кнопок
+      activateModalBtnStatus(film);
+
+      // Підключення функціоналу кнопок
+      onModalBtnClick(film);
     });
   }
 
+  // Закриття модалки та зняття прослуховувача з клавіші 'Escape'
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       hideAll();
@@ -84,6 +89,7 @@ function onModalOpen(event) {
     }
   });
 
+  // Закриття модалки при кліку на оверлей
   myOverlay.addEventListener('click', e => {
     if (e.target === myOverlay) {
       hideAll();
@@ -91,14 +97,27 @@ function onModalOpen(event) {
   });
 }
 
+// Закриття модалки при кліку на "хрестик"
 modalClose.forEach(btn => btn.addEventListener('click', hideAll));
 
+// Функція, що відповідає за активацію скролу та приховування елементів модалок
 function hideAll() {
   scrollController.enabledScroll();
+  addHiddenAtribute(myOverlay, modalCard, modalTeam);
+}
 
-  myOverlay.hidden = true;
-  modalCard.hidden = true;
-  modalTeam.hidden = true;
+// Функція, що додає/знімає hidden-атрибути
+// ---- у якості аргументу передавати елементи, що треба сховати!
+function addHiddenAtribute(elem) {
+  const elemArray = [myOverlay, modalCard, modalTeam];
+
+  elemArray.forEach(element => {
+    if (element === elem) {
+      element.hidden = true;
+    } else {
+      element.hidden = false;
+    }
+  });
 }
 
 function activateModalBtnStatus(film) {
