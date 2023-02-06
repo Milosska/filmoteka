@@ -71,14 +71,15 @@ function onModalBtnClick(movieObj) {
     });
     localStorage.setItem(key, JSON.stringify(renewedMoviesArray));
   }
-  // Функція, що змінює текстовий контент кнопок
-  function toggleBtnText(btn, key) {
-    if (btn.classList.contains('is-active')) {
-      btn.textContent = `In ${key}`;
-    } else {
-      btn.textContent = `Add to ${key}`;
-    }
+}
+
+// Функція, що змінює текстовий контент кнопок
+function toggleBtnText(btn, key) {
+  if (btn.classList.contains('is-active')) {
+    btn.textContent = `Remove from ${key}`;
+  } else {
+    btn.textContent = `Add to ${key}`;
   }
 }
 
-export { onModalBtnClick };
+export { onModalBtnClick, toggleBtnText };

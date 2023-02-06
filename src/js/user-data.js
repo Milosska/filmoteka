@@ -35,7 +35,7 @@ function getMoviesFromLS(currentKey) {
   const storage = localStorage.getItem(currentKey);
   if (storage === null) {
     mainList.innerHTML = '';
-    console.log('Nothing added to the library. Local storage is empty');
+    console.log('Nothing is added to the library');
   } else {
     try {
       const moviesArray = JSON.parse(storage);

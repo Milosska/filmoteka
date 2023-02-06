@@ -1,5 +1,5 @@
 // <!-- Люда Даценко та Тетяна Крамаренко -->
-import { onModalBtnClick } from './add-btn';
+import { onModalBtnClick, toggleBtnText } from './add-btn';
 import filmMarkup from '../../templates/film-modal.hbs';
 
 const modalClose = document.querySelectorAll('.modal__close');
@@ -61,6 +61,7 @@ function onModalOpen(event) {
     parsedFilms.forEach(film => {
       if (Number(film.id) === Number(event.target.dataset.id)) {
         modalWrapper.innerHTML = filmMarkup(film);
+        activateModalBtnStatus(film);
         onModalBtnClick(film);
       }
     });
@@ -88,4 +89,24 @@ function hideAll() {
   myOverlay.hidden = true;
   modalCard.hidden = true;
   modalTeam.hidden = true;
+}
+
+function activateModalBtnStatus(film) {
+  const keys = ['watched', 'queue'];
+
+  keys.forEach(key => {
+    const btnEl = document.querySelector(`.movie-btn__btn--${key}`);
+    const LSMoviesArray = JSON.parse(localStorage.getItem(key));
+
+    if (!LSMoviesArray) {
+      return;
+    }
+
+    LSMoviesArray.forEach(movie => {
+      if (movie.id === film.id) {
+        btnEl.classList.add('is-active');
+        toggleBtnText(btnEl, key);
+      }
+    });
+  });
 }
