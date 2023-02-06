@@ -15,9 +15,15 @@ function onModalBtnClick(movieObj) {
     if (evt.target.nodeName !== 'BUTTON') {
       return;
     }
-    if (evt.target.textContent.toUpperCase() === 'ADD TO QUEUE') {
+    if (
+      evt.target.textContent.toUpperCase() === 'ADD TO QUEUE' ||
+      evt.target.textContent.toUpperCase() === 'REMOVE FROM QUEUE'
+    ) {
       key = QUEUE_KEY;
-    } else if (evt.target.textContent.toUpperCase() === 'ADD TO WATCHED') {
+    } else if (
+      evt.target.textContent.toUpperCase() === 'ADD TO WATCHED' ||
+      evt.target.textContent.toUpperCase() === 'REMOVE FROM WATCHED'
+    ) {
       key = WATCHED_KEY;
     }
     if (evt.target.classList.contains('is-active')) {
