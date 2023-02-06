@@ -23,8 +23,17 @@ export default function cardsMarkupCreate(moviesArray) {
 
   // join genres from array to one string
   Handlebars.registerHelper('getGenres', function (genresArray) {
-    const genres = genresArray.join(',');
-    return genres ? genres : 'Genres n/a';
+    const genresCount = genresArray.length;
+
+    if (genresCount === 0) {
+      return 'Genres n/a';
+    }
+
+    if (genresCount > 2) {
+      return `${genresArray[0]}, ${genresArray[1]}, other`;
+    }
+
+    return genresArray.join(',');
   });
 
   // transform rate from 7.948 to 7.9
