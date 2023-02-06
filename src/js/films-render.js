@@ -13,6 +13,7 @@ const messageEl = document.querySelector('.form__message--error');
 let currentPage = 1;
 let query = '';
 
+
 // Завантаження функцій тільки для сторінки HOME
 window.onload = function renderPageMarkup() {
   if (window.location.href.includes('library')) {
@@ -61,18 +62,26 @@ function searchByQuery(query) {
     .then(data => {
       if (data.results.length === 0) {
         messageEl.removeAttribute('hidden');
+        window.setTimeout(slowMessageEl,1500);
+        searchByQuery();
         return;
       }
       createAPagination(data);
-
       resultProcessing(data.results);
-      messageEl.setAttribute('hidden', true);
+    
     })
     .catch(err => {
       console.log(err);
     });
   spinner.hide();
 }
+
+
+function slowMessageEl() {
+  messageEl.setAttribute('hidden', true);
+}
+
+
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
 function resultProcessing(array) {
