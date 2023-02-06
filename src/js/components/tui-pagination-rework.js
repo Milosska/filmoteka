@@ -2317,6 +2317,7 @@
              * @ignore
              */
             update: function (viewData) {
+              console.log(viewData);
               if (viewData.lastPage < 6) {
                 this._empty();
                 this._appendPrevButton(viewData);
@@ -2326,6 +2327,14 @@
                 this._appendNextButton(viewData);
                 return;
               }
+              if (viewData.lastPage === 1) {
+                this._empty();
+
+                this._appendPages(viewData);
+
+                return;
+              }
+
               this._empty();
 
               this._appendPrevButton(viewData);

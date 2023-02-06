@@ -1,11 +1,12 @@
 // <!-- Герман -->
-import Pagination from './tui-pagination';
+import Pagination from './components/tui-pagination-rework';
 import { reloadOnPageChange, clearMarkup } from './films-render';
 
 function createAPagination(data) {
-  if (data.total_results <= 20) {
-    return;
-  }
+  // if (data.total_results <= 20) {
+  //   console.log(data);
+  //   return;
+  // }
 
   const paganation = new Pagination(document.getElementById('pagination'), {
     page: data.page,
@@ -32,7 +33,6 @@ function createAPagination(data) {
         '</a>',
     },
   });
-  console.log(data);
   paganation.on('afterMove', ({ page }) => {
     // currentPage = page;
     try {
