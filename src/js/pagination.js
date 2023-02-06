@@ -32,7 +32,7 @@ function createAPagination(data) {
         '</a>',
     },
   });
-  // console.log(data);
+  console.log(data);
   paganation.on('afterMove', ({ page }) => {
     // currentPage = page;
     try {
