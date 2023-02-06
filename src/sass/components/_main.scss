@@ -1,6 +1,16 @@
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main{
+  flex-grow: 1;
+}
+
 .main__container {
   @extend %container;
-  min-height: 70vh;
+  // min-height: 70vh;
 }
 
 .main__list {
