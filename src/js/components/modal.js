@@ -1,3 +1,5 @@
+// Функціонал модального вікна та відображення статусу фільмів на кнопках
+
 import { onModalBtnClick, toggleBtnText } from './add-btn';
 import filmMarkup from '../../templates/film-modal.hbs';
 
@@ -120,6 +122,7 @@ function addHiddenAtribute(elem) {
   });
 }
 
+// Функція, що відображає статус фільма на кнопках модалки
 function activateModalBtnStatus(film) {
   const keys = ['watched', 'queue'];
 
