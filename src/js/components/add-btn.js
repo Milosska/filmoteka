@@ -4,7 +4,7 @@
 
 import cardsMarkupCreate from './card-render';
 
-const mainList = document.querySelector('.main__list');
+// const mainList = document.querySelector('.main__list');
 
 function onModalBtnClick(movieObj) {
   const btnContEl = document.querySelector('.movie__buttons');
@@ -79,9 +79,9 @@ function onModalBtnClick(movieObj) {
         renewedMoviesArray.push(movie);
       }
     });
-    localStorage.setItem(key, JSON.stringify(renewedMoviesArray));
-    
-    mainList.innerHTML = cardsMarkupCreate(renewedMoviesArray);
+    // localStorage.setItem(key, JSON.stringify(renewedMoviesArray));
+
+    // mainList.innerHTML = cardsMarkupCreate(renewedMoviesArray);
   }
 }
 // Функція, що змінює текстовий контент кнопок
