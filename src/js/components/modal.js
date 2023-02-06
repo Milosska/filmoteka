@@ -1,6 +1,7 @@
 // <!-- Люда Даценко та Тетяна Крамаренко -->
 import { onModalBtnClick } from './add-btn';
 import filmMarkup from '../../templates/film-modal.hbs';
+const Handlebars = require('handlebars');
 
 const modalClose = document.querySelectorAll('.modal__close');
 const myOverlay = document.querySelector('.overlay');
@@ -60,6 +61,15 @@ function onModalOpen(event) {
 
     parsedFilms.forEach(film => {
       if (Number(film.id) === Number(event.target.dataset.id)) {
+        Handlebars.registerHelper(
+          'checkOverviewForNull',
+          function (movieAbout) {
+            return movieAbout
+              ? movieAbout
+              : 'Sorry, but review absent for this movie 😥';
+          }
+        );
+
         modalWrapper.innerHTML = filmMarkup(film);
         onModalBtnClick(film);
       }
