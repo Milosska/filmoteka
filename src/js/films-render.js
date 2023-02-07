@@ -62,8 +62,8 @@ function searchByQuery(query) {
     .then(data => {
       if (data.results.length === 0) {
         messageEl.removeAttribute('hidden');
-        window.setTimeout(timeoutMessageEl, 2500);
-        window.setTimeout(timeoutTrend, 2500);
+        window.setTimeout(timeoutMessageEl, 2000);
+        searchByQuery();
         return;
       }
       resultProcessing(data.results);
@@ -80,9 +80,6 @@ function timeoutMessageEl() {
   messageEl.setAttribute('hidden', true);
 }
 
-function timeoutTrend() {
-  searchByQuery();
-}
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
 function resultProcessing(array) {
