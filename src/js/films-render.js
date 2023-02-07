@@ -1,5 +1,6 @@
-// 1) Функція, що малює розмітку мейна при переході на сторінку або використанні пагінації - Ірина;
-// 2) Функція, що шукає фільми за ключовим словом - Олег;
+// 1) Функція, що малює розмітку мейна при переході на сторінку або використанні пагінації;
+// 2) Функція фетча за трендами
+// 3) Функція, що шукає фільми за ключовим словомг;
 
 import { fetchInfo, forParseGenres } from './components/fetch.js';
 import cardsMarkupCreate from './components/card-render';
@@ -76,7 +77,7 @@ function searchByQuery(query) {
   spinner.hide();
 }
 
-
+// Сповіщення про помилку і перехід на тренди
 function timeoutMessageEl() {
   messageEl.setAttribute('hidden', true);
 }
@@ -99,6 +100,7 @@ function clearMarkup() {
   mainList.innerHTML = '';
 }
 
+// Функція переходу на тренди
 function reloadOnPageChange(page) {
   currentPage = page;
   searchByQuery(query);

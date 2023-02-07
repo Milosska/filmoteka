@@ -1,4 +1,4 @@
-// <!-- Герман -->
+// Функціонал пагінації
 import Pagination from './components/tui-pagination-rework';
 import { reloadOnPageChange, clearMarkup } from './films-render';
 

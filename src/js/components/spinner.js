@@ -1,4 +1,4 @@
-//<!-- Ярослав Михайлов  -->
+// Функціонал спінера
 const refs = {
   spinner: document.querySelector('.spinner'),
 };

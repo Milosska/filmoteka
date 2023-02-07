@@ -1,5 +1,6 @@
-// <!-- Ольга Мельник та Олексій Воробйов -->
+//Універсальні фетч та парс жанрів
 
+// 1) Функція, що виконує фетч за заданим ендпоїнтом
 // У параметри "params" передавати:
 // ----- у разі фетча за ключовим словом:
 // 1) першим параметром - слово для пошуку
@@ -32,6 +33,7 @@ async function fetchInfo(endpoint, ...params) {
   }
 }
 
+// 2) Функція, що виконує парс жанрів
 function forParseGenres(array) {
   const genres = localStorage.getItem('genres');
   const parcedGenres = JSON.parse(genres);
