@@ -8,7 +8,7 @@ function createAPagination(data) {
   //   return;
   // }
 
-  const paganation = new Pagination(document.getElementById('pagination'), {
+  const pagination = new Pagination(document.getElementById('pagination'), {
     page: data.page,
     totalItems: data.total_results,
     itemsPerPage: 20,
@@ -33,7 +33,7 @@ function createAPagination(data) {
         '</a>',
     },
   });
-  paganation.on('afterMove', ({ page }) => {
+  pagination.on('afterMove', ({ page }) => {
     // currentPage = page;
     try {
       clearMarkup();
