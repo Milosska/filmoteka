@@ -16,7 +16,7 @@
           <td class='table__data table__data--title'>Vote / Votes</td>
           <td class='table__data table__data--info'><span
               class='table__number table__number--orange'
-            >{{vote_average}}</span>/
+            >{{truncRate vote_average}}</span>/
             <span
               class='table__number table__number--grey'
             >{{vote_count}}</span>
@@ -34,9 +34,7 @@
         </tr>
         <tr class='table__row'>
           <td class='table__data table__data--title'>Genre</td>
-          <td class='table__data table__data--info'>{{#each genre_ids}}<span
-                class='movie__genres'
-              >{{this}},</span>{{/each}}</td>
+          <td class='table__data table__data--info'>{{joinGenres genre_ids}}</td>
         </tr>
       </table>
     </div>

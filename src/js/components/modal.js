@@ -72,7 +72,27 @@ function onModalOpen(event) {
           : 'Sorry, but review absent for this movie 😥';
       });
 
+      // join genres from array to one string
+      Handlebars.registerHelper('joinGenres', function (genresArray) {
+        if (genresArray.length === 0) {
+          return 'genre is not available';
+        }
+        return genresArray.join(',');
+      });
+
+      // transform rate from 7.948 to 7.9
+      Handlebars.registerHelper('truncRate', function (voteString) {
+        const truncatedString = voteString
+          ? (Math.round(parseFloat(voteString) * 10) / 10).toString()
+          : 'n/a';
+
+        return truncatedString.length === 1
+          ? truncatedString + '.0'
+          : truncatedString;
+      });
+
       // Відмальовка начинки модалки
+      console.log(film);
       modalWrapper.innerHTML = filmMarkup(film);
 
       // Активація стану кнопок
