@@ -2115,19 +2115,19 @@
             _appendLastButton: function (viewData) {
               var button;
 
-              if (viewData.page + 2 < viewData.lastPage) {
+              if (viewData.page < viewData.lastPage) {
                 button = this._buttons.last;
               } else {
                 button = this._buttons.disabledLast;
               }
               button.firstChild.textContent = viewData.lastPage;
 
-              if (
-                viewData.lastPage - 3 < viewData.page ||
-                viewData.lastPage <= 5
-              ) {
-                button.firstChild.hidden = true;
-              }
+              // if (
+              //   viewData.lastPage - 3 < viewData.page ||
+              //   viewData.lastPage <= 5
+              // ) {
+              //   button.firstChild.hidden = true;
+              // }
 
               this._getContainerElement().appendChild(button);
             },
@@ -2317,6 +2317,26 @@
              */
             update: function (viewData) {
               // console.log(viewData);
+              if (viewData.lastPage === 1) {
+                this._empty();
+
+                this._appendPages(viewData);
+
+                return;
+              }
+
+              if (viewData.page < 4 && viewData.lastPage > 5) {
+                this._empty();
+
+                this._appendPrevButton(viewData);
+
+                this._appendPages(viewData);
+                this._appendNextMoreButton(viewData);
+                this._appendLastButton(viewData);
+                this._appendNextButton(viewData);
+
+                return;
+              }
               if (viewData.lastPage < 6) {
                 this._empty();
                 this._appendPrevButton(viewData);
@@ -2326,14 +2346,17 @@
                 this._appendNextButton(viewData);
                 return;
               }
-              if (viewData.lastPage === 1) {
+
+              if (viewData.page + 3 > viewData.lastPage) {
                 this._empty();
 
+                this._appendPrevButton(viewData);
+                this._appendFirstButton(viewData);
+                this._appendPrevMoreButton(viewData);
                 this._appendPages(viewData);
-
+                this._appendNextButton(viewData);
                 return;
               }
-
               this._empty();
 
               this._appendPrevButton(viewData);
