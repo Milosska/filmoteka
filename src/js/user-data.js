@@ -1,22 +1,25 @@
 // Функціонал рендеру карток з фільмами на сторінці "MY LIBRARY"
 import cardsMarkupCreate from './components/card-render';
+import emptyLS from '../templates/empty-library.hbs';
 
 const btn = document.querySelector('.header-library__btn');
 const mainList = document.querySelector('.main__list');
 const KEYS = ['watched', 'queue'];
 
-// Прослуховування події тільки на сторінці "MY LIBRARY"
-if (window.location.href.includes('library')) {
-  btn.addEventListener('click', onLibraryBtn);
-}
-
-// Відмальовка сторінки при першому завантаженні
+// Визначення ключа при першому завантаженні
 let currentKey = JSON.parse(localStorage.getItem('KEYNAME'));
 if (!currentKey) {
   currentKey = 'watched';
 }
-addIsActiveClass();
-getMoviesFromLS(currentKey);
+
+// Прослуховування події тільки на сторінці "MY LIBRARY"
+if (window.location.href.includes('library')) {
+  btn.addEventListener('click', onLibraryBtn);
+
+  // Відмальовка сторінки при першому завантаженні
+  addIsActiveClass();
+  getMoviesFromLS(currentKey);
+}
 
 // Колбек-функція
 function onLibraryBtn(evt) {
@@ -51,17 +54,13 @@ function addIsActiveClass() {
 
 // Функція рендеру розмітки фільмів
 function getMoviesFromLS(currentKey) {
-  const storage = localStorage.getItem(currentKey);
-  if (storage === null) {
-    mainList.innerHTML = '';
-    console.log('Nothing is added to the library');
+  const moviesArray = JSON.parse(localStorage.getItem(currentKey));
+  // ----- Якщо сховище пусте
+  if (moviesArray === null) {
+    mainList.innerHTML = emptyLS();
   } else {
-    try {
-      const moviesArray = JSON.parse(storage);
-      const markup = cardsMarkupCreate(moviesArray);
-      mainList.innerHTML = markup;
-    } catch (error) {
-      console.log(error);
-    }
+    // ----- Якщо не пусте
+    const markup = cardsMarkupCreate(moviesArray);
+    mainList.innerHTML = markup;
   }
 }
