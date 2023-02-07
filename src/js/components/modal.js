@@ -1,6 +1,7 @@
 // Функціонал модального вікна та відображення статусу фільмів на кнопках
 
 import { onModalBtnClick, toggleBtnText } from './add-btn';
+import { indicateLSKey } from './indicate-key';
 import filmMarkup from '../../templates/film-modal.hbs';
 
 const Handlebars = require('handlebars');
@@ -56,8 +57,7 @@ function onModalOpen(event) {
     addHiddenAtribute(modalTeam);
 
     const modalWrapper = document.querySelector('.movie');
-    let currentFilms = localStorage.getItem('current-films');
-    let parsedFilms = JSON.parse(currentFilms);
+    let parsedFilms = JSON.parse(localStorage.getItem(indicateLSKey()));
 
     parsedFilms.forEach(film => {
       // Перевірка на відповідність фільма

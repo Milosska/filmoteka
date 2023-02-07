@@ -1,5 +1,6 @@
 // Функція, що додає або витягає фільми з local-storage по натисканню на кнопки модалки
 
+import { indicateLSKey } from './indicate-key';
 import cardsMarkupCreate from './card-render';
 import emptyLS from '../../templates/empty-library.hbs';
 
@@ -84,20 +85,11 @@ function onModalBtnClick(movieObj) {
 
     // Функція, що перемальовує розмітку бібліотеки при видаленні фільму
     function renewLibraryMarkup(array) {
+      const mainList = document.querySelector('.main__list');
+
       if (window.location.href.includes('library')) {
         const mainList = document.querySelector('.main__list');
-        let currentList;
-        const statusArray = [
-          document.querySelector('.btn__watched'),
-          document.querySelector('.btn__queue'),
-        ];
-
-        // ------ Зчитування назви листа, де знаходиться клієнт
-        statusArray.forEach(elem => {
-          if (elem.classList.contains('is-active')) {
-            currentList = elem.textContent.toLowerCase();
-          }
-        });
+        let currentList = indicateLSKey();
 
         // -------- Перевірка відповідності між поточним плейлистом і функціоналом кнопок модалки
         if (currentList === key) {

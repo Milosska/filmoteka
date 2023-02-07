@@ -1,3 +1,4 @@
+import './js/components/indicate-key';
 import './js/components/add-btn';
 import './js/components/card-render';
 import './js/components/fetch';
