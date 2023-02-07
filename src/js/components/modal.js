@@ -92,7 +92,6 @@ function onModalOpen(event) {
       });
 
       // Відмальовка начинки модалки
-      console.log(film);
       modalWrapper.innerHTML = filmMarkup(film);
 
       // Активація стану кнопок

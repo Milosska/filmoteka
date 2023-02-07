@@ -86,8 +86,25 @@ function onModalBtnClick(movieObj) {
     function renewLibraryMarkup(array) {
       if (window.location.href.includes('library')) {
         const mainList = document.querySelector('.main__list');
-        mainList.innerHTML = cardsMarkupCreate(array);
+        let currentList;
+        const statusArray = [
+          document.querySelector('.btn__watched'),
+          document.querySelector('.btn__queue'),
+        ];
 
+        // ------ Зчитування назви листа, де знаходиться клієнт
+        statusArray.forEach(elem => {
+          if (elem.classList.contains('is-active')) {
+            currentList = elem.textContent.toLowerCase();
+          }
+        });
+
+        // -------- Перевірка відповідності між поточним плейлистом і функціоналом кнопок модалки
+        if (currentList === key) {
+          mainList.innerHTML = cardsMarkupCreate(array);
+        }
+
+        // ---- Випадок пустого local-storage
         if (array.length < 1) {
           mainList.innerHTML = emptyLS();
         }
