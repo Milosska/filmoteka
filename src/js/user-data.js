@@ -1,37 +1,55 @@
-//<!-- Іван  -->
-// 1) За натисканням на кнопку "Watched" показуються переглянуті фільми користувача
-// 2) За натисканням на кнопку "Queue" показуються фільми додані в чергу користувача
-
+// Функціонал рендеру карток з фільмами на сторінці "MY LIBRARY"
 import cardsMarkupCreate from './components/card-render';
 
 const btn = document.querySelector('.header-library__btn');
 const mainList = document.querySelector('.main__list');
-const WATCHED_KEY = 'watched';
-const QUEUE_KEY = 'queue';
-let currentKey = WATCHED_KEY;
+const KEYS = ['watched', 'queue'];
 
+// Прослуховування події тільки на сторінці "MY LIBRARY"
 if (window.location.href.includes('library')) {
   btn.addEventListener('click', onLibraryBtn);
 }
 
+// Відмальовка сторінки при першому завантаженні
+let currentKey = JSON.parse(localStorage.getItem('KEYNAME'));
+if (!currentKey) {
+  currentKey = 'watched';
+}
+addIsActiveClass();
 getMoviesFromLS(currentKey);
 
+// Колбек-функція
 function onLibraryBtn(evt) {
+  // ----- Перевірка натискання на кнопку
   if (evt.target.nodeName !== 'BUTTON') {
     return;
   }
-  if (evt.target.textContent.toUpperCase() === 'QUEUE') {
-    currentKey = QUEUE_KEY;
-    btn.lastElementChild.classList.add('is-active');
-    btn.firstElementChild.classList.remove('is-active');
-  } else if (evt.target.textContent.toUpperCase() === 'WATCHED') {
-    currentKey = WATCHED_KEY;
-    btn.firstElementChild.classList.add('is-active');
-    btn.lastElementChild.classList.remove('is-active');
-  }
+
+  // ----- Обирання ключа
+  KEYS.forEach(key => {
+    if (evt.target.textContent.toLowerCase().includes(`${key}`)) {
+      currentKey = key;
+      localStorage.setItem('KEYNAME', JSON.stringify(currentKey));
+    }
+  });
+
+  addIsActiveClass();
   getMoviesFromLS(currentKey);
 }
 
+// Функція, що присвоює клас is-active
+function addIsActiveClass() {
+  const buttons = btn.querySelectorAll('button');
+  buttons.forEach(button => {
+    if (button.textContent.toLowerCase().includes(`${currentKey}`)) {
+      button.classList.add('is-active');
+    } else {
+      button.classList.remove('is-active');
+    }
+  });
+}
+
+// Функція рендеру розмітки фільмів
 function getMoviesFromLS(currentKey) {
   const storage = localStorage.getItem(currentKey);
   if (storage === null) {

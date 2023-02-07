@@ -1,7 +1,6 @@
 // Функція, що додає або витягає фільми з local-storage по натисканню на кнопки модалки
 
-// // import cardsMarkupCreate from './card-render';
-// // const mainList = document.querySelector('.main__list');
+import cardsMarkupCreate from './card-render';
 
 function onModalBtnClick(movieObj) {
   // Активація функції за умови, якщо на сторінці наявна хоча б 1 картка з фільмом
@@ -47,6 +46,8 @@ function onModalBtnClick(movieObj) {
     evt.target.classList.toggle('is-active');
     toggleBtnText(evt.target, key);
 
+    // ============ Кінець колбеку / початок допоміжних функцій =============
+
     // Функція, що додає фільм до локального сховища
     function addToLS(movieObj, key) {
       // ---- Випадок пустого сховища
@@ -65,6 +66,7 @@ function onModalBtnClick(movieObj) {
       }
 
       moviesInLS.unshift(movieObj);
+      renewLibraryMarkup(moviesInLS);
       localStorage.setItem(key, JSON.stringify(moviesInLS));
     }
 
@@ -75,8 +77,16 @@ function onModalBtnClick(movieObj) {
       }
 
       const newMoviesList = moviesInLS.filter(({ id }) => id !== movieObj.id);
+      renewLibraryMarkup(newMoviesList);
       localStorage.setItem(key, JSON.stringify(newMoviesList));
-      // mainList.innerHTML = cardsMarkupCreate(renewedMoviesArray);
+    }
+
+    // Функція, що перемальовує розмітку бібліотеки при видаленні фільму
+    function renewLibraryMarkup(array) {
+      if (window.location.href.includes('library')) {
+        const mainList = document.querySelector('.main__list');
+        mainList.innerHTML = cardsMarkupCreate(array);
+      }
     }
   }
 }
