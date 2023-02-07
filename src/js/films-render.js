@@ -14,7 +14,6 @@ const messageEl = document.querySelector('.form__message--error');
 let currentPage = 1;
 let query = '';
 
-
 // Завантаження функцій тільки для сторінки HOME
 window.onload = function renderPageMarkup() {
   if (window.location.href.includes('library')) {
@@ -52,8 +51,8 @@ function searchByQuery(query) {
   if (!query) {
     fetchInfo('trends', currentPage)
       .then(data => {
-        createAPagination(data);
         resultProcessing(data.results);
+        createAPagination(data);
       })
       .catch(error => console.log(error));
     return;
@@ -63,13 +62,12 @@ function searchByQuery(query) {
     .then(data => {
       if (data.results.length === 0) {
         messageEl.removeAttribute('hidden');
-        window.setTimeout(timeoutMessageEl,2500);
-        window.setTimeout(timeoutTrend,2500);
+        window.setTimeout(timeoutMessageEl, 2500);
+        window.setTimeout(timeoutTrend, 2500);
         return;
       }
-      createAPagination(data);
       resultProcessing(data.results);
-    
+      createAPagination(data);
     })
     .catch(err => {
       console.log(err);
@@ -85,7 +83,6 @@ function timeoutMessageEl() {
 function timeoutTrend() {
   searchByQuery();
 }
-
 
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
 function resultProcessing(array) {
