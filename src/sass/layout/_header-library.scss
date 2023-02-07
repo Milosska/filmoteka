@@ -50,6 +50,13 @@
   font-size: 30px;
   line-height: 1.17;
   color: var(--white);
+  transition-property: all;
+  transition: $animation;
+
+  &:hover,
+  &:focus {
+    color: var(--orange);
+  }
 
   @media screen and (min-width: 768px) {
     display: inline;
@@ -76,6 +83,8 @@
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
   color: var(--white);
 
@@ -100,6 +109,22 @@
 
 .logo__icon {
   color: currentColor;
+  animation: rotateX-anim 6s infinite alternate;
+
+  @keyframes rotateX-anim {
+    0% {
+      transform: rotateX(0deg);
+    }
+
+    50% {
+      transform: rotateX(180deg);
+    }
+
+    100% {
+      transform: rotateX(360deg);
+    }
+  }
+
   @media screen and (min-width: 768px) {
     margin-right: 10px;
   }
@@ -108,8 +133,17 @@
 .header-library__btn {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    gap: 16px;
+  }
 }
+
 .btn__queue,
 .btn__watched {
   display: flex;
@@ -124,8 +158,6 @@
   border-radius: 5px;
   color: var(--white);
   background-color: transparent;
-
-  // gap: 10px;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -152,24 +184,10 @@
 
   @media screen and (min-width: 768px) {
     width: 152px;
-    // margin-right: 216px;
   }
 
   @media screen and (min-width: 1280px) {
     height: 42px;
     width: 148px;
-    // margin-right: 485px;
   }
 }
-// .btn__watched {
-//   @media screen and (min-width: 768px) {
-//    gap
-//     margin-right: 32px;
-//     margin-left: 216px;
-//   }
-//   @media screen and (min-width: 1280px) {
-
-//     margin-right: 16px;
-//     margin-left: 485px;
-//   }
-// }
