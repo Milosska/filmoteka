@@ -56,7 +56,7 @@ function addIsActiveClass() {
 function getMoviesFromLS(currentKey) {
   const moviesArray = JSON.parse(localStorage.getItem(currentKey));
   // ----- Якщо сховище пусте
-  if (moviesArray === null) {
+  if (!moviesArray || moviesArray.length < 1) {
     mainList.innerHTML = emptyLS();
   } else {
     // ----- Якщо не пусте

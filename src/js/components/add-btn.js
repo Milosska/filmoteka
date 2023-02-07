@@ -1,6 +1,7 @@
 // Функція, що додає або витягає фільми з local-storage по натисканню на кнопки модалки
 
 import cardsMarkupCreate from './card-render';
+import emptyLS from '../../templates/empty-library.hbs';
 
 function onModalBtnClick(movieObj) {
   // Активація функції за умови, якщо на сторінці наявна хоча б 1 картка з фільмом
@@ -86,6 +87,10 @@ function onModalBtnClick(movieObj) {
       if (window.location.href.includes('library')) {
         const mainList = document.querySelector('.main__list');
         mainList.innerHTML = cardsMarkupCreate(array);
+
+        if (array.length < 1) {
+          mainList.innerHTML = emptyLS();
+        }
       }
     }
   }
