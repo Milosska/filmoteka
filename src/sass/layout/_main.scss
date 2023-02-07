@@ -30,30 +30,26 @@ body {
 // Стилізація пустої бібліотеки
 .clear-list {
   margin: 0 auto;
-}
-.clear-list__title {
   text-align: center;
+}
 
+.clear-list__title {
   font-weight: 500;
   font-size: 45px;
   line-height: 1.7;
 }
+
 .clear-list__text {
   font-size: 30px;
   line-height: 1.7;
 }
-.clear-list__link {
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translate(-50%);
 
+.clear-list__link {
+  display: inline-block;
   margin-top: 20px;
   padding: 13px 0;
 
   min-width: 150px;
-  // height: 44px;
-
   border: 1px solid var(--black);
   border-radius: 5px;
   background-color: transparent;
