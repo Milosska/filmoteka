@@ -16,11 +16,11 @@ toggle.addEventListener('click', event => {
 function addDarkClass() {
   try {
     if (localStorage.getItem('theme') === 'dark') {
-      document.querySelector('.main__container').classList.add('dark');
+      document.querySelector('.main').classList.add('dark');
       sunIcon.style.visibility = 'hidden';
       moonIcon.style.visibility = 'visible';
     } else {
-      document.querySelector('.main__container').classList.remove('dark');
+      document.querySelector('.main').classList.remove('dark');
       moonIcon.style.visibility = 'hidden';
       sunIcon.style.visibility = 'visible';
     }

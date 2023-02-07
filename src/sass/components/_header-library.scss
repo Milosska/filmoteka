@@ -173,3 +173,27 @@
 //     margin-left: 485px;
 //   }
 // }
+.themetoggle {
+  position: absolute;
+  top: 75px;
+  right: 30px;
+  color: var(--white);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.themetoggle__sun-button {
+  width: 35px;
+  height: 35px;
+  fill: var(--white);
+
+  @media screen and (max-width: 767px) {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    scale: 1.1;
+  }
+}
