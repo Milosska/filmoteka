@@ -207,6 +207,10 @@
   text-align: left;
   overflow: auto;
   height: 160px;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    height: 125px;
+  }
 }
 
 .movie__buttons {
