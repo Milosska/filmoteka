@@ -3,6 +3,7 @@
 import { onModalBtnClick, toggleBtnText } from './add-btn';
 import { indicateLSKey } from './indicate-key';
 import filmMarkup from '../../templates/film-modal.hbs';
+import { trailer } from './trailer.js';
 
 const Handlebars = require('handlebars');
 
@@ -99,12 +100,18 @@ function onModalOpen(event) {
 
       // Підключення функціоналу кнопок
       onModalBtnClick(film);
+
+      trailer(film);
     });
   }
 
   // Закриття модалки та зняття прослуховувача з клавіші 'Escape'
   document.addEventListener('keydown', event => {
+    const filmModalBackdrop = document.querySelector('[data-trailer]');
     if (event.key === 'Escape') {
+      if (!filmModalBackdrop.classList.contains('is-hidden')) {
+        return;
+      }
       hideAll();
       document.removeEventListener('keydown', onModalOpen);
     }
