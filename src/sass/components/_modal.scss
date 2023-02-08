@@ -99,14 +99,18 @@
   }
 
   @include media(min, desktop) {
-    @include flex(16px, center, top);
+    @include flex(16px, space-evenly, top);
   }
 }
 
 .movie__img {
   // width: 100%;
-  margin: 0 auto 20px;
   border-radius: 5px;
+  margin-bottom: 20px;
+
+  @include media(min, tablet) {
+    margin: 0;
+  }
 }
 
 .movie__poster {
