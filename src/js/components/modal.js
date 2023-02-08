@@ -141,10 +141,10 @@ function addHiddenAtribute(elem) {
 
   elemArray.forEach(element => {
     if (element === elem) {
-      element.hidden = true;
+      element.hidden = true;     
     } else {
       element.hidden = false;
-    }
+       }
   });
 }
 
