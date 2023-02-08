@@ -86,9 +86,16 @@ function timeoutMessageEl() {
 function resultProcessing(array) {
   forParseGenres(array);
   localStorage.setItem('current-films', JSON.stringify(array));
-  mainList.innerHTML = cardsMarkupCreate(array, true);
-  popcornPlugEl = document.querySelector('.popcorn-plug');
-  popcornPlugEl.addEventListener('click', popcornPlugAnimation);
+
+  // Якщо кліькість фільмів, які потрібно відмалювати дорівнює 20 тоді:
+  if (array.length === 20) {
+    mainList.innerHTML = cardsMarkupCreate(array, true); // відмальовуємо заглушку-попкорн
+    popcornPlugEl = document.querySelector('.popcorn-plug');
+    popcornPlugEl.addEventListener('click', popcornPlugAnimation);
+  } else {
+    mainList.innerHTML = cardsMarkupCreate(array, false); // інакше не відмальовуємо заглушку-попкорн
+  }
+
   spinner.hide();
 }
 
