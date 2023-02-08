@@ -16,7 +16,7 @@ async function fetchInfo(endpoint, ...params) {
     trends: `trending/movie/day?api_key=${TOKEN}&page=${params[0]}`,
     keyword: `search/movie?api_key=${TOKEN}&language=en-US&query=${params[0]}&page=${params[1]}&include_adult=false`,
     movie: `movie/${params[0]}?api_key=${TOKEN}&language=en-US`,
-    trailer: `${BASE_URL}movie/${params[0]}/videos?api_key=${TOKEN}`,
+    trailer: `movie/${params[0]}/videos?api_key=${TOKEN}`,
     genres: `genre/movie/list?api_key=${TOKEN}&language=en-US`,
   };
 

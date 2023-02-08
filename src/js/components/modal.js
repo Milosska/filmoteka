@@ -3,6 +3,8 @@
 import { onModalBtnClick, toggleBtnText } from './add-btn';
 import { indicateLSKey } from './indicate-key';
 import filmMarkup from '../../templates/film-modal.hbs';
+import { trailer } from './trailer.js';
+
 
 const Handlebars = require('handlebars');
 
@@ -99,6 +101,8 @@ function onModalOpen(event) {
 
       // Підключення функціоналу кнопок
       onModalBtnClick(film);
+
+      trailer(film);
     });
   }
 
