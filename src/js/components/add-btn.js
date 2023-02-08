@@ -3,6 +3,7 @@
 import { indicateLSKey } from './indicate-key';
 import cardsMarkupCreate from './card-render';
 import emptyLS from '../../templates/empty-library.hbs';
+import toggleTheme from '../toggle-theme';
 
 function onModalBtnClick(movieObj) {
   // Активація функції за умови, якщо на сторінці наявна хоча б 1 картка з фільмом
@@ -100,6 +101,7 @@ function onModalBtnClick(movieObj) {
         if (array.length < 1) {
           mainList.innerHTML = emptyLS();
         }
+        toggleTheme();
       }
     }
   }
