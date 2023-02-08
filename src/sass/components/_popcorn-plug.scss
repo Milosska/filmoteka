@@ -1,0 +1,14 @@
+.paradiso-img {
+  margin: 0 auto;
+  width: 395px;
+}
+
+.popcorn-plug {
+  @include media(max, desktop) {
+    display: none;
+  }
+  @include media(min, desktop) {
+    display: flex;
+    align-items: center;
+  }
+}
