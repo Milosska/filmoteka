@@ -134,31 +134,10 @@ function addHiddenAtribute(elem) {
 
   elemArray.forEach(element => {
     if (element === elem) {
-      element.hidden = true;
-     
-
-      //   if (element === modalCard) {
-      //   modalCard.classList.add("modal-is-hidden");
-      //   }
-      //   if (element === modalTeam) {
-      //   modalTeam.classList.add("modal-is-hidden");
-      //  }
-      //  if (element === myOverlay) {
-      //   myOverlay.classList.add("overlay-is-hidden");
-      //  }
+      element.hidden = true;     
     } else {
       element.hidden = false;
-    
-      // if (element === modalCard) {
-      //   modalCard.classList.toggle("modal-is-visible");
-      //   }
-      //   if (element === modalTeam) {
-      //   modalTeam.classList.toggle("modal-is-visible");
-      //  }
-      //  if (element === myOverlay) {
-      //   myOverlay.classList.toggle("overlay-is-visible");
-      //  }
-    }
+       }
   });
 }
 
