@@ -5,7 +5,6 @@ import { indicateLSKey } from './indicate-key';
 import filmMarkup from '../../templates/film-modal.hbs';
 import { trailer } from './trailer.js';
 
-
 const Handlebars = require('handlebars');
 
 // Елементи, де лежать модалки
@@ -108,7 +107,11 @@ function onModalOpen(event) {
 
   // Закриття модалки та зняття прослуховувача з клавіші 'Escape'
   document.addEventListener('keydown', event => {
+    const filmModalBackdrop = document.querySelector('[data-trailer]');
     if (event.key === 'Escape') {
+      if (!filmModalBackdrop.classList.contains('is-hidden')) {
+        return;
+      }
       hideAll();
       document.removeEventListener('keydown', onModalOpen);
     }
