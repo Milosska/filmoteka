@@ -66,6 +66,7 @@
   display: flex;
 }
 .trailer__link:hover,.trailer__link:focus{
+  z-index: -1;
   cursor: pointer;
   position: relative;
   &::after{

@@ -9,12 +9,11 @@ function trailer(data) {
       const url = data.results[0].key;
       const iframe = document.querySelector('.iframe');
       const refs = {
-        openModalBtn: document.querySelector('.movie__poster'),
+        openModalBtn: document.querySelector('.movie__img'),
         closeModalBtn: document.querySelector('[data-trailer-close]'),
         modal: document.querySelector('[data-trailer]'),
-        modalIcon: document.querySelector('.movie__img'),
       };
-      refs.modalIcon.classList.add('trailer__link');
+      refs.openModalBtn.classList.add('trailer__link');
       refs.openModalBtn.addEventListener('click', toggleModal);
       refs.closeModalBtn.addEventListener('click', closeModal);
       function toggleModal() {
