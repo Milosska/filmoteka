@@ -2,12 +2,19 @@
 
 //Виклик шаблону hbs:
 import cardMarkup from '../../templates/film-card.hbs';
+import popcornPlugMarkup from '../../templates/popcorn-plug.hbs';
 
 // Функція cardsMarkupCreate
 // приймає масив фільмів,
 // та повертає строку, яка відповідає HTML-розмітці списку фільмів
 // <li>...</li>
-export default function cardsMarkupCreate(moviesArray) {
+// Якщо другий параметр, який передається функції буде true, то в розмітку додасться
+// анімована заглушка "popkorn"
+
+export default function cardsMarkupCreate(
+  moviesArray,
+  isPopcornPlugNeedToRender = false
+) {
   const Handlebars = require('handlebars');
   const BASEIMGURL = 'https://image.tmdb.org/t/p/w500';
 
@@ -47,5 +54,7 @@ export default function cardsMarkupCreate(moviesArray) {
       : truncatedString;
   });
 
-  return cardMarkup(moviesArray);
+  return isPopcornPlugNeedToRender
+    ? cardMarkup(moviesArray) + popcornPlugMarkup()
+    : cardMarkup(moviesArray);
 }

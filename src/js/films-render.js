@@ -6,11 +6,13 @@ import { fetchInfo, forParseGenres } from './components/fetch.js';
 import cardsMarkupCreate from './components/card-render';
 import { createAPagination } from './pagination';
 import spinner from './components/spinner.js';
+import popcornPlugAnimation from './components/popcorn-plug';
 
 const formEl = document.querySelector('.form');
 const inputEl = document.querySelector('.form__input');
 const mainList = document.querySelector('.main__list');
 const messageEl = document.querySelector('.form__message--error');
+let popcornPlugEl;
 let currentPage = 1;
 let query = '';
 
@@ -80,12 +82,13 @@ function timeoutMessageEl() {
   messageEl.setAttribute('hidden', true);
 }
 
-
 // Обробка масиву даних (внесення в локальне сховище, парс жанрів та відмальовка розмітки)
 function resultProcessing(array) {
   forParseGenres(array);
   localStorage.setItem('current-films', JSON.stringify(array));
-  mainList.innerHTML = cardsMarkupCreate(array);
+  mainList.innerHTML = cardsMarkupCreate(array, true);
+  popcornPlugEl = document.querySelector('.popcorn-plug');
+  popcornPlugEl.addEventListener('click', popcornPlugAnimation);
   spinner.hide();
 }
 

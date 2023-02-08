@@ -1,6 +1,7 @@
 import './js/components/indicate-key';
 import './js/components/add-btn';
 import './js/components/card-render';
+import './js/components/popcorn-plug';
 import './js/components/fetch';
 import './js/components/scrollToTop';
 import './js/films-render';
