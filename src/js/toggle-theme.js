@@ -1,40 +1,61 @@
 const toggle = document.querySelector('.themetoggle');
 const sunIcon = document.querySelector('.sun');
 const moonIcon = document.querySelector('.moon');
+const THEME_LOCAL_STORAGE_KEY = 'theme';
 
 moonIcon.style.visibility = 'hidden';
 sunIcon.style.visibility = 'visible';
-addDarkClass();
 
-toggle.addEventListener('click', () => {
-  if (localStorage.getItem('theme') === 'dark') {
-    localStorage.removeItem('theme');
+toggle.addEventListener('click', onThemeChangeClick);
+
+addThemeClass();
+drawThemeBtnIco();
+
+function onThemeChangeClick() {
+  if (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) === 'dark') {
+    localStorage.removeItem(THEME_LOCAL_STORAGE_KEY);
   } else {
-    localStorage.setItem('theme', 'dark');
+    localStorage.setItem(THEME_LOCAL_STORAGE_KEY, 'dark');
   }
-  addDarkClass();
-});
+  addThemeClass();
+  drawThemeBtnIco();
+}
 
-function addDarkClass() {
+export default function addThemeClass() {
   try {
-    if (localStorage.getItem('theme') === 'dark') {
-      document.querySelector('.main').classList.add('dark');
-      document
-        .querySelectorAll('.movie-card__title')
-        .forEach(card => card.classList.add('dark'));
-      // document.querySelector('.movie-card__title').classList.add('dark');
-      document.querySelector('.tui-page-btn').classList.add('dark');
-      sunIcon.style.visibility = 'hidden';
-      moonIcon.style.visibility = 'visible';
+    if (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) === 'dark') {
+      addThemetoClass('.main', 'dark');
+      addThemetoClass('.movie-card__title', 'dark');
+      addThemetoClass('.tui-page-btn', 'dark');
     } else {
-      document.querySelector('.main').classList.remove('dark');
-      document
-        .querySelectorAll('.movie-card__title')
-        .forEach(card => card.classList.remove('dark'));
-      // document.querySelector('.movie-card__title').classList.remove('dark');
-      document.querySelector('.tui-page-btn').classList.remove('dark');
-      moonIcon.style.visibility = 'hidden';
-      sunIcon.style.visibility = 'visible';
+      removeThemeFromClass('.main', 'dark');
+      removeThemeFromClass('.movie-card__title', 'dark');
+      removeThemeFromClass('.tui-page-btn', 'dark');
     }
   } catch (err) {}
+}
+
+// Draw icon that equal current theme
+function drawThemeBtnIco() {
+  if (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) === 'dark') {
+    sunIcon.style.visibility = 'hidden';
+    moonIcon.style.visibility = 'visible';
+    return;
+  }
+  moonIcon.style.visibility = 'hidden';
+  sunIcon.style.visibility = 'visible';
+}
+
+// Adds theme to all elements, by class
+function addThemetoClass(className, themeName) {
+  document
+    .querySelectorAll(className)
+    .forEach(classElement => classElement.classList.add(themeName));
+}
+
+// Removes theme from all elements, by class
+function removeThemeFromClass(className, themeName) {
+  document
+    .querySelectorAll(className)
+    .forEach(classElement => classElement.classList.remove(themeName));
 }

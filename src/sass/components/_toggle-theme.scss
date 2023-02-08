@@ -44,6 +44,11 @@
   color: var(--white);
 }
 
-.tui-pagination .tui-page-btn.dark {
+.tui-page-btn.dark {
   color: var(--white);
+
+  &:hover,
+  &:focus {
+    background-color: #1a1a1a;
+  }
 }

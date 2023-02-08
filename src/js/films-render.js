@@ -7,6 +7,7 @@ import cardsMarkupCreate from './components/card-render';
 import { createAPagination } from './pagination';
 import spinner from './components/spinner.js';
 import popcornPlugAnimation from './components/popcorn-plug';
+import toggleTheme from './toggle-theme';
 
 const formEl = document.querySelector('.form');
 const inputEl = document.querySelector('.form__input');
@@ -55,6 +56,7 @@ function searchByQuery(query) {
       .then(data => {
         resultProcessing(data.results);
         createAPagination(data);
+        toggleTheme();
       })
       .catch(error => console.log(error));
     return;
@@ -70,6 +72,7 @@ function searchByQuery(query) {
       }
       resultProcessing(data.results);
       createAPagination(data);
+      toggleTheme();
     })
     .catch(err => {
       console.log(err);
@@ -95,7 +98,7 @@ function resultProcessing(array) {
   } else {
     mainList.innerHTML = cardsMarkupCreate(array, false); // інакше не відмальовуємо заглушку-попкорн
   }
-
+  toggleTheme();
   spinner.hide();
 }
 
