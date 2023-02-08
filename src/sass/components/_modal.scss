@@ -5,12 +5,8 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  transition-property: opacity;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
 }
-
 .modal__card {
   position: absolute;
   top: 50%;
@@ -62,6 +58,7 @@
 
   &:hover {
     background-color: var(--orange);
+    transform: scale(1.3);
   }
 }
 
@@ -110,6 +107,10 @@
 
   @include media(min, tablet) {
     margin: 0;
+  }
+  &:hover {
+    transition: $animation;
+    transform: scale(1.03);
   }
 }
 
@@ -256,6 +257,7 @@
     border-color: var(--orange);
     background-color: var(--orange);
     transition: $animation;
+    transform: scale(1.2);
   }
 
   // @media screen and (max-width: 768px) {
