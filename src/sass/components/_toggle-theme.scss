@@ -8,7 +8,7 @@
 
 .themetoggle {
   position: absolute;
-  top: 30px;
+  top: 120px;
   right: 15px;
   color: var(--white);
   background-color: transparent;
@@ -16,7 +16,7 @@
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    top: 35px;
+    top: 45px;
     right: 30px;
   }
 }
@@ -26,10 +26,10 @@
   height: 35px;
   fill: var(--white);
 
-  @media screen and (max-width: 767px) {
-    width: 20px;
-    height: 20px;
-  }
+  // @media screen and (max-width: 767px) {
+  //   width: 20px;
+  //   height: 20px;
+  // }
 
   &:hover {
     scale: 1.1;
