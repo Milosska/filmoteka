@@ -1,6 +1,7 @@
 // Функціонал рендеру карток з фільмами на сторінці "MY LIBRARY"
 import cardsMarkupCreate from './components/card-render';
 import emptyLS from '../templates/empty-library.hbs';
+import toggleTheme from './toggle-theme';
 
 const btn = document.querySelector('.header-library__btn');
 const mainList = document.querySelector('.main__list');
@@ -63,4 +64,5 @@ function getMoviesFromLS(currentKey) {
     const markup = cardsMarkupCreate(moviesArray);
     mainList.innerHTML = markup;
   }
+  toggleTheme();
 }

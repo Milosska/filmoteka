@@ -27,10 +27,14 @@ export default function addThemeClass() {
       addThemetoClass('.main', 'dark');
       addThemetoClass('.movie-card__title', 'dark');
       addThemetoClass('.tui-page-btn', 'dark');
+      addThemetoClass('.clear-list', 'dark');
+      addThemetoClass('.clear-list__link', 'dark');
     } else {
       removeThemeFromClass('.main', 'dark');
       removeThemeFromClass('.movie-card__title', 'dark');
       removeThemeFromClass('.tui-page-btn', 'dark');
+      removeThemeFromClass('.clear-list', 'dark');
+      removeThemeFromClass('.clear-list__link', 'dark');
     }
   } catch (err) {}
 }
