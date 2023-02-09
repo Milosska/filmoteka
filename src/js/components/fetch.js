@@ -18,6 +18,8 @@ async function fetchInfo(endpoint, ...params) {
     movie: `movie/${params[0]}?api_key=${TOKEN}&language=en-US`,
     trailer: `movie/${params[0]}/videos?api_key=${TOKEN}`,
     genres: `genre/movie/list?api_key=${TOKEN}&language=en-US`,
+    // для отримання поточної інформації з сервера API
+    configuration: `configuration?api_key=${TOKEN}`,
   };
 
   try {

@@ -316,7 +316,6 @@
   @include font-size(14, 16);
   text-decoration: underline;
   color: var(--orange);
-  
 
   @include media(min, tablet) {
     @include font-size(16, 19);
@@ -333,27 +332,27 @@
   }
 }
 
-.modal__team-link{
+.modal__team-link {
   display: block;
   width: 100px;
 
-  
-
   &:hover,
-  &:focus{
+  &:focus {
     color: var(--red);
 
-    .modal__pic{border: var(--orange);
-    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
-    scale: 1.1;}
+    .modal__pic {
+      border: var(--orange);
+      box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+      scale: 1.1;
+    }
 
-    .modal__role{
+    .modal__role {
       color: var(--orange);
     }
   }
 }
 
-.modal__pic{
+.modal__pic {
   border-radius: 25%;
   @include animation-l(border, box-shadow, scale);
 }

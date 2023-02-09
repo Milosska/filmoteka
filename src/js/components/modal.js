@@ -66,12 +66,18 @@ function onModalOpen(event) {
         return;
       }
 
+      // Відмальовка бекдропа модалки
+      renderModalBackdrop(film.backdrop_path);
+
       // Плейсхолдер для секції "About"
-      Handlebars.registerHelper('checkOverviewForNull', function (movieAbout) {
-        return movieAbout
-          ? movieAbout
-          : 'Sorry, but review absent for this movie 😥';
-      });
+      http: Handlebars.registerHelper(
+        'checkOverviewForNull',
+        function (movieAbout) {
+          return movieAbout
+            ? movieAbout
+            : 'Sorry, but review absent for this movie 😥';
+        }
+      );
 
       // join genres from array to one string
       Handlebars.registerHelper('joinGenres', function (genresArray) {
@@ -141,10 +147,10 @@ function addHiddenAtribute(elem) {
 
   elemArray.forEach(element => {
     if (element === elem) {
-      element.hidden = true;     
+      element.hidden = true;
     } else {
       element.hidden = false;
-       }
+    }
   });
 }
 
@@ -167,4 +173,16 @@ function activateModalBtnStatus(film) {
       }
     });
   });
+}
+
+// Функція, яка відмальовує бекдроп модалки
+function renderModalBackdrop(img) {
+  if (!img) {
+    return;
+  }
+
+  myOverlay.style.backgroundColor = 'transparent';
+  myOverlay.style.backgroundImage = `url(http://image.tmdb.org/t/p/original${img})`;
+  myOverlay.style.backgroundSize = 'cover';
+  modalCard.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
 }
