@@ -109,10 +109,6 @@
   @include media(min, tablet) {
     margin: 0;
   }
-  &:hover {
-    transition: $animation;
-    transform: scale(1.03);
-  }
 }
 
 .movie__poster {
