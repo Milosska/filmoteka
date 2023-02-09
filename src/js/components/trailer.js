@@ -11,7 +11,6 @@ function trailer(data) {
 
       data.results.forEach(result => {
         if (result.name.toLowerCase().includes('trailer')) {
-          console.log(result);
           url = result.key;
         }
       });

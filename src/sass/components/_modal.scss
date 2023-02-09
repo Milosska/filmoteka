@@ -81,10 +81,11 @@
 
   @include media(min, tablet) {
     padding: 40px;
+    width: 70vw;
   }
 
   @include media(min, desktop) {
-    padding: 40px;
+    height: 60vh;
   }
 }
 
@@ -304,7 +305,7 @@
   }
 }
 
-.modal__wrapper {
+.modal__pic {
   width: 100px;
   height: 100px;
   background-color: var(--orange);
@@ -315,6 +316,7 @@
   @include font-size(14, 16);
   text-decoration: underline;
   color: var(--orange);
+  
 
   @include media(min, tablet) {
     @include font-size(16, 19);
@@ -324,8 +326,34 @@
 .modal__role {
   @include font-size(14, 16);
   color: var(--dark-grey);
+  @include animation(color);
 
   @include media(min, tablet) {
     @include font-size(16, 19);
   }
+}
+
+.modal__team-link{
+  display: block;
+  width: 100px;
+
+  
+
+  &:hover,
+  &:focus{
+    color: var(--red);
+
+    .modal__pic{border: var(--orange);
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+    scale: 1.1;}
+
+    .modal__role{
+      color: var(--orange);
+    }
+  }
+}
+
+.modal__pic{
+  border-radius: 25%;
+  @include animation-l(border, box-shadow, scale);
 }
