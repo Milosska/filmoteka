@@ -3,7 +3,7 @@ import { fetchInfo } from './fetch.js';
 function trailer(data) {
   fetchInfo('trailer', data.id)
     .then(data => {
-      if (!data.results[0].key) {
+      if (!data.results[0]) {
         return;
       }
 

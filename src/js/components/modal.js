@@ -178,6 +178,8 @@ function activateModalBtnStatus(film) {
 // Функція, яка відмальовує бекдроп модалки
 function renderModalBackdrop(img) {
   if (!img) {
+    myOverlay.style.background = 'rgba(0, 0, 0, 0.7)';
+    modalCard.style.backgroundColor = 'var(--white)';
     return;
   }
 
