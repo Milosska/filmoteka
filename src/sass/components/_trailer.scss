@@ -87,6 +87,12 @@
 .trailer__link:focus {
   cursor: pointer;
   position: relative;
+   .movie__poster{
+    
+    transition: $animation;
+    transform: scale(1.03);
+   }
+
   &::after {
     position: absolute;
     top: 45%;
