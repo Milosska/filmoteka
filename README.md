@@ -1,99 +1,104 @@
-# Parcel template
+# Filmoteka
 
-Этот проект был создан при помощи Parcel. Для знакомства и настройки
-дополнительных возможностей [обратись к документации](https://parceljs.org/).
+Filmoteka is adaptive movie database website that provides any user with a
+convenient and frugal way to find information about favorite films right from
+the comfort of user's own home. It includes two pages - main page and library.
 
-## Подготовка нового проекта
+![Filmoteka](./assets/01.jpg)
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Склонируй этот репозиторий.
-3. Измени имя папки с `parcel-project-template` на имя своего проекта.
-4. Создай новый пустой репозиторий на GitHub.
-5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
-   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Установи зависимости проекта в терминале командой `npm install` .
-7. Запусти режим разработки, выполнив команду `npm start`.
-8. Перейди в браузере по адресу [http://localhost:1234](http://localhost:1234).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+The project was develloped by the **'Cast'** team.  
+Team leader: <a href="https://github.com/Milosska">Liudmyla Deinychenko</a>  
+Scrum master: <a href="https://github.com/Pibodee">Bogdan Salo</a> (Footer
+modal, Movie traler modal)
 
-## Файлы и папки
+Developers:
 
-- Все паршалы файлов стилей должны лежать в папке `src/sass` и импортироваться в
-  файлы стилей страниц. Например, для `index.html` файл стилей называется
-  `index.scss`.
-- Изображения добавляй в папку `src/images`. Сборщик оптимизирует их, но только
-  при деплое продакшн версии проекта. Все это происходит в облаке, чтобы не
-  нагружать твой компьютер, так как на слабых машинах это может занять много
-  времени.
+- <a href="https://github.com/TaniaShmigel">Tetiana Shmigel</a> - Header section
+- <a href="https://github.com/Yaroslav12002">Yaroslav Mychailov</a> - Movie
+  card, Handlebars template, GSAP animation
+- <a href="https://github.com/IrynaVal">Iryna Petrenko</a> - Movie list, Watched
+  and Queue lists
+- <a href="https://github.com/Olga-Melnyk">Olga Melnyk</a> - API services,
+  themes change
+- <a href="https://github.com/Luidmyla007">Liudmyla Datsenko</a> - Movie modal
+- <a href="https://github.com/Tatiana1910">Tetiana Kramarenko</a> - Movie modal
+- <a href="https://github.com/Oleh202208">Oleh Polupan</a> - Films search
+- <a href="https://github.com/AlexGusl97">Oleksandr Husliakov</a> - Modal movie
+  info
+- <a href="https://github.com/Demianovq">Herman Demianov</a> - Pagination
+- <a href="https://github.com/IvanSosnin1983">Ivan Sosnin</a> - Watched and
+  Queue lists
+- <a href="https://github.com/ChornyiYevhenii">Evhenii Chornyi</a> - Modal
+  Watched and Queue buttons functional (with local storage)
+- <a href="https://github.com/AlexeyVorobyov95">Alexey Vorobyov</a> - API
+  services
 
-## Деплой
+---
 
-Для настройки деплоя проекта необходимо выполнить несколько дополнительных шагов
-по настройке твоего репозитория. Зайди во вкладку `Settings` и в подсекции
-`Actions` выбери выбери пункт `General`.
+## Main page
 
-![GitHub actions settings](./assets/actions-config-step-1.png)
+This page gives user the opportunity to get acquainted with the list of popular
+movies of today.
 
-Пролистай страницу до последней секции, в которой убедись что выбраны опции как
-на следующем изображении и нажми `Save`. Без этих настроек у сборки будет
-недостаточно прав для автоматизации процесса деплоя.
+### Header
 
-![GitHub actions settings](./assets/actions-config-step-2.png)
+The header section includes website's logo, site navigation, theme change button
+and search query, that allows user to find the film of his/her interest.
 
-Продакшн версия проекта будет автоматически собираться и деплоиться на GitHub
-Pages, в ветку `gh-pages`, каждый раз когда обновляется ветка `main`. Например,
-после прямого пуша или принятого пул-реквеста. Для этого необходимо в файле
-`package.json` отредактировать поле `homepage` и скрипт `build`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+### Main
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /your_repo_name/"
-},
-```
+Main section is presented by the list of popular movies. Each movie card
+includes title, poster, genres info, release year and rationg of the movie.  
+At the end of the section user can find pagiantion that alows to easily switch
+pages, and interactive animation that will make even the most demanding user
+smile.
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+![FilmotekaPaginationAnd Animation](./assets/02.jpg)
 
-![GitHub Pages settings](./assets/repo-settings.png)
+### Modal
 
-### Статус деплоя
+By click on any movie card user can open a modal window with additional
+information on the film. The backbrop of the modal is presented by movie poster,
+which catches interest of the user and allows to see some new movie details.
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+![FilmotekaModal](./assets/03.jpg)  
+In the end of the modal window user can find tow buttons, that allow to add
+current movie to the library (to the list of watched films or to the queue
+accordingly).  
+By clicking on the movie poster user can also watch a movie trailer.
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
+![FilmotekaTrailer](./assets/04.jpg)
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+### Footer
 
-![Deployment status](./assets/status.png)
+The footer section includes interactive link, that opens modal window with the
+list of **Cast team** members.
 
-### Живая страница
+![FilmotekaFooter](./assets/05.jpg)
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
+---
 
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` или скрипта `build` в
-файле `package.json`.
+## Library page
 
-## Как это работает
+This page allows user to keep two presonal movie lists - one for watched movies,
+another - for the queue.
 
-![How it works](./assets/how-it-works.png)
+![FilmotekaLibrary](./assets/06.jpg)
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+---
+
+## Technology stack
+
+Project was build using indicated tech stack:
+
+<div align="center">
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192107858-fe19f043-c502-4009-8c47-476fc89718ad.png" alt="REST" title="REST" /></code>
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" alt="Git" title="Git" /></code>
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub" title="GitHub" /></code>
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192108891-d86b6220-e232-423a-bf5f-90903e6887c3.png" alt="Visual Studio Code" title="Visual Studio Code" /></code>
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" alt="HTML" title="HTML" /></code>
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS" /></code><code><img height="50" src="https://user-images.githubusercontent.com/25181517/192158956-48192682-23d5-4bfc-9dfb-6511ade346bc.png" alt="React" title="Sass" /></code>
+ 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JavaScript" title="JavaScript" /></code>
+		<code><img height="50" src="https://user-images.githubusercontent.com/25181517/121401671-49102800-c959-11eb-9f6f-74d49a5e1774.png" alt="npm" title="npm" /></code>
+	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/187955008-981340e6-b4cc-441b-80cf-7a5e94d29e7e.png" alt="webpack" title="webpack" />
+</div>
